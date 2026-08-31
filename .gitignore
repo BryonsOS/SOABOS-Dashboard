@@ -16,6 +16,3 @@ site/out/
 .DS_Store
 .vscode/
 .idea/
-nfl-survivor/node_modules
-nfl-survivor/dist
-nfl-survivor/.env
