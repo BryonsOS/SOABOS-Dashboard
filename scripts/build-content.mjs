@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import matter from 'gray-matter'
+import { buildPool } from './pool-engine.mjs'
 
 const root = process.cwd()
 const contentDir = path.join(root, 'content')
@@ -25,6 +26,7 @@ const gratitude = readJson(path.join(contentDir, 'gratitude.json'))
 const events = readJson(path.join(contentDir, 'events.json'))
 const fitness = readJson(path.join(contentDir, 'fitness.json'))
 const warRoom = readJson(path.join(contentDir, 'war-room.json'))
+const pool = readJson(path.join(contentDir, 'pool.json'))
 
 const computedStats = {
   projects: projects.length,
@@ -53,7 +55,8 @@ const bundle = {
   gratitude,
   events,
   fitness,
-  warRoom
+  warRoom,
+  pool: buildPool(pool)
 }
 
 for (const dir of outputDirs) {

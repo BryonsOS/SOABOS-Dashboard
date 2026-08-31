@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-08-31T00:30:22.034Z",
-    "buildId": 1788136222034
+    "generatedAt": "2026-08-31T01:00:09.623Z",
+    "buildId": 1788138009623
   },
   "dashboard": {
     "site": {
@@ -1281,7 +1281,7 @@
     ]
   },
   "warRoom": {
-    "generatedAt": "2026-08-31T00:30:21.904Z",
+    "generatedAt": "2026-08-31T01:00:09.523Z",
     "source": "tmp_war_room_products_master.json",
     "summary": {
       "totalRows": 0,
@@ -1361,5 +1361,1245 @@
       "Out of Stock Winners": [],
       "Dead / Review": []
     }
+  },
+  "pool": {
+    "settings": {
+      "title": "SOABOS Survivor Pool",
+      "subtitle": "One pick a week. Win and advance, lose and take a strike. Two strikes and you are out.",
+      "season": 2026,
+      "league": "NFL",
+      "totalWeeks": 18,
+      "strikesToEliminate": 2,
+      "tieCountsAs": "survive",
+      "allowBuyBacks": false,
+      "buyBackFee": 0,
+      "buyBackDeadlineWeek": 0,
+      "byeWeeksPerPlayer": 0,
+      "missedPickPolicy": "strike",
+      "entryFee": 25,
+      "currency": "USD",
+      "pickDeadlineLabel": "Sunday 1:00 PM ET",
+      "payoutNote": "Winner takes the pot. If more than one player is still alive after Week 18, survivors split evenly.",
+      "commissioner": "Bryon"
+    },
+    "summary": {
+      "entrantsTotal": 1,
+      "aliveCount": 1,
+      "eliminatedCount": 0,
+      "weeksPlayed": 0,
+      "weeksRemaining": 18,
+      "currentWeek": 1,
+      "currentWeekStatus": "open",
+      "currentWeekDeadline": "2026-09-13T17:00:00.000Z",
+      "picksIn": 0,
+      "picksNeeded": 1,
+      "potLabel": "$25",
+      "formatLabel": "Double elimination · 2 strikes",
+      "championName": null
+    },
+    "rules": [
+      {
+        "title": "One pick a week",
+        "body": "Pick a single NFL team to win each week. Locks at Sunday 1:00 PM ET. Win and you advance."
+      },
+      {
+        "title": "Teams are one-time use",
+        "body": "Once you pick a team it is gone for the rest of the season. All 32 teams are available to start, and every pick you make — win or lose — burns that team."
+      },
+      {
+        "title": "Two strikes and you are out",
+        "body": "A loss is a strike, not an exit. You survive your first strike and are eliminated on strike 2."
+      },
+      {
+        "title": "Ties",
+        "body": "A tie counts as a survive — no strike. The team is still burned."
+      },
+      {
+        "title": "Missed picks",
+        "body": "No pick in by the deadline is a strike. Get your pick in even if you are unsure."
+      },
+      {
+        "title": "BYE weeks",
+        "body": "No BYE weeks. Every week needs a pick."
+      },
+      {
+        "title": "Buy-backs",
+        "body": "No buy-backs. Once you are out, you are out."
+      },
+      {
+        "title": "Entry and payout",
+        "body": "$25 to enter. Winner takes the pot. If more than one player is still alive after Week 18, survivors split evenly."
+      }
+    ],
+    "standings": [
+      {
+        "id": "bryon",
+        "name": "Bryon",
+        "role": "commissioner",
+        "paid": true,
+        "status": "alive",
+        "strikes": 0,
+        "strikesRemaining": 2,
+        "strikesToEliminate": 2,
+        "eliminatedWeek": null,
+        "weeksSurvived": 0,
+        "teamsUsed": [],
+        "teamsUsedCount": 0,
+        "teamsRemaining": 32,
+        "byesUsed": 0,
+        "byesRemaining": 0,
+        "currentPick": null,
+        "currentPickLabel": "No pick yet",
+        "lastOutcome": null,
+        "lastOutcomeLabel": "Has not played a graded week yet.",
+        "statusLabel": "Alive · clean sheet",
+        "history": [
+          {
+            "week": 1,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 2,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 3,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 4,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 5,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 6,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 7,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 8,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 9,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 10,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 11,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 12,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 13,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 14,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 15,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 16,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 17,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 18,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          }
+        ]
+      }
+    ],
+    "alive": [
+      {
+        "id": "bryon",
+        "name": "Bryon",
+        "role": "commissioner",
+        "paid": true,
+        "status": "alive",
+        "strikes": 0,
+        "strikesRemaining": 2,
+        "strikesToEliminate": 2,
+        "eliminatedWeek": null,
+        "weeksSurvived": 0,
+        "teamsUsed": [],
+        "teamsUsedCount": 0,
+        "teamsRemaining": 32,
+        "byesUsed": 0,
+        "byesRemaining": 0,
+        "currentPick": null,
+        "currentPickLabel": "No pick yet",
+        "lastOutcome": null,
+        "lastOutcomeLabel": "Has not played a graded week yet.",
+        "statusLabel": "Alive · clean sheet",
+        "history": [
+          {
+            "week": 1,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 2,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 3,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 4,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 5,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 6,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 7,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 8,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 9,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 10,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 11,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 12,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 13,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 14,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 15,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 16,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 17,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          },
+          {
+            "week": 18,
+            "pick": null,
+            "teamName": null,
+            "outcome": "awaiting",
+            "label": "No pick yet",
+            "strike": false,
+            "burnsTeam": false,
+            "usesBye": false,
+            "counted": false
+          }
+        ]
+      }
+    ],
+    "eliminated": [],
+    "weeks": [
+      {
+        "week": 1,
+        "status": "open",
+        "statusLabel": "Picks open",
+        "deadline": "2026-09-13T17:00:00.000Z",
+        "deadlineLabel": "Sun, Sep 13, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": true,
+        "picks": []
+      },
+      {
+        "week": 2,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-09-20T17:00:00.000Z",
+        "deadlineLabel": "Sun, Sep 20, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 3,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-09-27T17:00:00.000Z",
+        "deadlineLabel": "Sun, Sep 27, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 4,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-10-04T17:00:00.000Z",
+        "deadlineLabel": "Sun, Oct 4, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 5,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-10-11T17:00:00.000Z",
+        "deadlineLabel": "Sun, Oct 11, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 6,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-10-18T17:00:00.000Z",
+        "deadlineLabel": "Sun, Oct 18, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 7,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-10-25T17:00:00.000Z",
+        "deadlineLabel": "Sun, Oct 25, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 8,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-11-01T18:00:00.000Z",
+        "deadlineLabel": "Sun, Nov 1, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 9,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-11-08T18:00:00.000Z",
+        "deadlineLabel": "Sun, Nov 8, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 10,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-11-15T18:00:00.000Z",
+        "deadlineLabel": "Sun, Nov 15, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 11,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-11-22T18:00:00.000Z",
+        "deadlineLabel": "Sun, Nov 22, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 12,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-11-29T18:00:00.000Z",
+        "deadlineLabel": "Sun, Nov 29, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 13,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-12-06T18:00:00.000Z",
+        "deadlineLabel": "Sun, Dec 6, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 14,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-12-13T18:00:00.000Z",
+        "deadlineLabel": "Sun, Dec 13, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 15,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-12-20T18:00:00.000Z",
+        "deadlineLabel": "Sun, Dec 20, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 16,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2026-12-27T18:00:00.000Z",
+        "deadlineLabel": "Sun, Dec 27, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 17,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2027-01-03T18:00:00.000Z",
+        "deadlineLabel": "Sun, Jan 3, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      },
+      {
+        "week": 18,
+        "status": "upcoming",
+        "statusLabel": "Upcoming",
+        "deadline": "2027-01-10T18:00:00.000Z",
+        "deadlineLabel": "Sun, Jan 10, 1:00 PM",
+        "picksIn": 0,
+        "survivors": 0,
+        "casualties": 0,
+        "popular": [],
+        "resultsIn": 0,
+        "isCurrent": false,
+        "picks": []
+      }
+    ],
+    "currentWeek": {
+      "week": 1,
+      "status": "open",
+      "statusLabel": "Picks open",
+      "deadline": "2026-09-13T17:00:00.000Z",
+      "deadlineLabel": "Sun, Sep 13, 1:00 PM",
+      "picksIn": 0,
+      "survivors": 0,
+      "casualties": 0,
+      "popular": [],
+      "resultsIn": 0,
+      "isCurrent": true,
+      "picks": []
+    },
+    "teams": [
+      {
+        "abbr": "BUF",
+        "name": "Buffalo Bills",
+        "conference": "AFC",
+        "division": "East"
+      },
+      {
+        "abbr": "MIA",
+        "name": "Miami Dolphins",
+        "conference": "AFC",
+        "division": "East"
+      },
+      {
+        "abbr": "NE",
+        "name": "New England Patriots",
+        "conference": "AFC",
+        "division": "East"
+      },
+      {
+        "abbr": "NYJ",
+        "name": "New York Jets",
+        "conference": "AFC",
+        "division": "East"
+      },
+      {
+        "abbr": "BAL",
+        "name": "Baltimore Ravens",
+        "conference": "AFC",
+        "division": "North"
+      },
+      {
+        "abbr": "CIN",
+        "name": "Cincinnati Bengals",
+        "conference": "AFC",
+        "division": "North"
+      },
+      {
+        "abbr": "CLE",
+        "name": "Cleveland Browns",
+        "conference": "AFC",
+        "division": "North"
+      },
+      {
+        "abbr": "PIT",
+        "name": "Pittsburgh Steelers",
+        "conference": "AFC",
+        "division": "North"
+      },
+      {
+        "abbr": "HOU",
+        "name": "Houston Texans",
+        "conference": "AFC",
+        "division": "South"
+      },
+      {
+        "abbr": "IND",
+        "name": "Indianapolis Colts",
+        "conference": "AFC",
+        "division": "South"
+      },
+      {
+        "abbr": "JAX",
+        "name": "Jacksonville Jaguars",
+        "conference": "AFC",
+        "division": "South"
+      },
+      {
+        "abbr": "TEN",
+        "name": "Tennessee Titans",
+        "conference": "AFC",
+        "division": "South"
+      },
+      {
+        "abbr": "DEN",
+        "name": "Denver Broncos",
+        "conference": "AFC",
+        "division": "West"
+      },
+      {
+        "abbr": "KC",
+        "name": "Kansas City Chiefs",
+        "conference": "AFC",
+        "division": "West"
+      },
+      {
+        "abbr": "LV",
+        "name": "Las Vegas Raiders",
+        "conference": "AFC",
+        "division": "West"
+      },
+      {
+        "abbr": "LAC",
+        "name": "Los Angeles Chargers",
+        "conference": "AFC",
+        "division": "West"
+      },
+      {
+        "abbr": "DAL",
+        "name": "Dallas Cowboys",
+        "conference": "NFC",
+        "division": "East"
+      },
+      {
+        "abbr": "NYG",
+        "name": "New York Giants",
+        "conference": "NFC",
+        "division": "East"
+      },
+      {
+        "abbr": "PHI",
+        "name": "Philadelphia Eagles",
+        "conference": "NFC",
+        "division": "East"
+      },
+      {
+        "abbr": "WAS",
+        "name": "Washington Commanders",
+        "conference": "NFC",
+        "division": "East"
+      },
+      {
+        "abbr": "CHI",
+        "name": "Chicago Bears",
+        "conference": "NFC",
+        "division": "North"
+      },
+      {
+        "abbr": "DET",
+        "name": "Detroit Lions",
+        "conference": "NFC",
+        "division": "North"
+      },
+      {
+        "abbr": "GB",
+        "name": "Green Bay Packers",
+        "conference": "NFC",
+        "division": "North"
+      },
+      {
+        "abbr": "MIN",
+        "name": "Minnesota Vikings",
+        "conference": "NFC",
+        "division": "North"
+      },
+      {
+        "abbr": "ATL",
+        "name": "Atlanta Falcons",
+        "conference": "NFC",
+        "division": "South"
+      },
+      {
+        "abbr": "CAR",
+        "name": "Carolina Panthers",
+        "conference": "NFC",
+        "division": "South"
+      },
+      {
+        "abbr": "NO",
+        "name": "New Orleans Saints",
+        "conference": "NFC",
+        "division": "South"
+      },
+      {
+        "abbr": "TB",
+        "name": "Tampa Bay Buccaneers",
+        "conference": "NFC",
+        "division": "South"
+      },
+      {
+        "abbr": "ARI",
+        "name": "Arizona Cardinals",
+        "conference": "NFC",
+        "division": "West"
+      },
+      {
+        "abbr": "LAR",
+        "name": "Los Angeles Rams",
+        "conference": "NFC",
+        "division": "West"
+      },
+      {
+        "abbr": "SF",
+        "name": "San Francisco 49ers",
+        "conference": "NFC",
+        "division": "West"
+      },
+      {
+        "abbr": "SEA",
+        "name": "Seattle Seahawks",
+        "conference": "NFC",
+        "division": "West"
+      }
+    ],
+    "teamUsage": [
+      {
+        "abbr": "BUF",
+        "name": "Buffalo Bills",
+        "conference": "AFC",
+        "division": "East",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "MIA",
+        "name": "Miami Dolphins",
+        "conference": "AFC",
+        "division": "East",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "NE",
+        "name": "New England Patriots",
+        "conference": "AFC",
+        "division": "East",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "NYJ",
+        "name": "New York Jets",
+        "conference": "AFC",
+        "division": "East",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "BAL",
+        "name": "Baltimore Ravens",
+        "conference": "AFC",
+        "division": "North",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "CIN",
+        "name": "Cincinnati Bengals",
+        "conference": "AFC",
+        "division": "North",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "CLE",
+        "name": "Cleveland Browns",
+        "conference": "AFC",
+        "division": "North",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "PIT",
+        "name": "Pittsburgh Steelers",
+        "conference": "AFC",
+        "division": "North",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "HOU",
+        "name": "Houston Texans",
+        "conference": "AFC",
+        "division": "South",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "IND",
+        "name": "Indianapolis Colts",
+        "conference": "AFC",
+        "division": "South",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "JAX",
+        "name": "Jacksonville Jaguars",
+        "conference": "AFC",
+        "division": "South",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "TEN",
+        "name": "Tennessee Titans",
+        "conference": "AFC",
+        "division": "South",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "DEN",
+        "name": "Denver Broncos",
+        "conference": "AFC",
+        "division": "West",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "KC",
+        "name": "Kansas City Chiefs",
+        "conference": "AFC",
+        "division": "West",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "LV",
+        "name": "Las Vegas Raiders",
+        "conference": "AFC",
+        "division": "West",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "LAC",
+        "name": "Los Angeles Chargers",
+        "conference": "AFC",
+        "division": "West",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "DAL",
+        "name": "Dallas Cowboys",
+        "conference": "NFC",
+        "division": "East",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "NYG",
+        "name": "New York Giants",
+        "conference": "NFC",
+        "division": "East",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "PHI",
+        "name": "Philadelphia Eagles",
+        "conference": "NFC",
+        "division": "East",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "WAS",
+        "name": "Washington Commanders",
+        "conference": "NFC",
+        "division": "East",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "CHI",
+        "name": "Chicago Bears",
+        "conference": "NFC",
+        "division": "North",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "DET",
+        "name": "Detroit Lions",
+        "conference": "NFC",
+        "division": "North",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "GB",
+        "name": "Green Bay Packers",
+        "conference": "NFC",
+        "division": "North",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "MIN",
+        "name": "Minnesota Vikings",
+        "conference": "NFC",
+        "division": "North",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "ATL",
+        "name": "Atlanta Falcons",
+        "conference": "NFC",
+        "division": "South",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "CAR",
+        "name": "Carolina Panthers",
+        "conference": "NFC",
+        "division": "South",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "NO",
+        "name": "New Orleans Saints",
+        "conference": "NFC",
+        "division": "South",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "TB",
+        "name": "Tampa Bay Buccaneers",
+        "conference": "NFC",
+        "division": "South",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "ARI",
+        "name": "Arizona Cardinals",
+        "conference": "NFC",
+        "division": "West",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "LAR",
+        "name": "Los Angeles Rams",
+        "conference": "NFC",
+        "division": "West",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "SF",
+        "name": "San Francisco 49ers",
+        "conference": "NFC",
+        "division": "West",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      },
+      {
+        "abbr": "SEA",
+        "name": "Seattle Seahawks",
+        "conference": "NFC",
+        "division": "West",
+        "usedCount": 0,
+        "pickedThisWeek": 0
+      }
+    ],
+    "warnings": []
   }
 }

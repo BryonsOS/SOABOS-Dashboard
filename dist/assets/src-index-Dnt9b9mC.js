@@ -1,4 +1,4 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const c of document.querySelectorAll('link[rel="modulepreload"]'))a(c);new MutationObserver(c=>{for(const i of c)if(i.type==="childList")for(const l of i.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&a(l)}).observe(document,{childList:!0,subtree:!0});function s(c){const i={};return c.integrity&&(i.integrity=c.integrity),c.referrerPolicy&&(i.referrerPolicy=c.referrerPolicy),c.crossOrigin==="use-credentials"?i.credentials="include":c.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function a(c){if(c.ep)return;c.ep=!0;const i=s(c);fetch(c.href,i)}})();async function G(){const e=await fetch("./generated/content.json").then(c=>c.json()),t=document.querySelector("#app"),s=F(e);function a(){const c=fe(window.location.hash);t.innerHTML=H(s,c),xe(t,s,c)}window.addEventListener("hashchange",a),a()}function F(e){const{dashboard:t,current:s,projects:a,goals:c,areas:i,updates:l,birthdays:o,gratitude:r,events:p,fitness:x,warRoom:b}=e,m=[...a].sort(U),v=m[0]||null,$=l.at(-1)||null,w=m.filter(A=>String(A.data.status||"").toLowerCase()==="active"),k=m.filter(A=>String(A.data.priority||"").toLowerCase()==="high"),j=pe(s,m),L=de(i,m),P=m.slice(0,4),S=l.slice().reverse().slice(0,4),n=me(o),O=n.upcoming.slice(0,12),R=be(r),E=je(p),_=Le(x);return{dashboard:t,current:s,projects:a,goals:c,areas:i,updates:l,birthdays:o,gratitude:r,events:p,fitness:x,warRoom:b,sortedProjects:m,spotlightProject:v,topUpdate:$,activeProjects:w,highPriorityProjects:k,immediateMoves:j,laneGroups:L,hotProjects:P,recentUpdates:S,birthdaysState:n,allRecentBirthdays:O,gratitudeCard:R,eventsCard:E,fitnessCard:_}}function H(e,t){const s=Y(e,t);return`
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const c of document.querySelectorAll('link[rel="modulepreload"]'))a(c);new MutationObserver(c=>{for(const i of c)if(i.type==="childList")for(const r of i.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&a(r)}).observe(document,{childList:!0,subtree:!0});function s(c){const i={};return c.integrity&&(i.integrity=c.integrity),c.referrerPolicy&&(i.referrerPolicy=c.referrerPolicy),c.crossOrigin==="use-credentials"?i.credentials="include":c.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function a(c){if(c.ep)return;c.ep=!0;const i=s(c);fetch(c.href,i)}})();async function V(){const e=await fetch("./generated/content.json").then(c=>c.json()),t=document.querySelector("#app"),s=J(e);function a(){const c=ye(window.location.hash);t.innerHTML=z(s,c),be(t,s,c)}window.addEventListener("hashchange",a),a()}function J(e){const{dashboard:t,current:s,projects:a,goals:c,areas:i,updates:r,birthdays:o,gratitude:l,events:p,fitness:h,warRoom:$,pool:y}=e,g=[...a].sort(U),w=g[0]||null,k=r.at(-1)||null,j=g.filter(B=>String(B.data.status||"").toLowerCase()==="active"),L=g.filter(B=>String(B.data.priority||"").toLowerCase()==="high"),S=fe(s,g),P=he(i,g),N=g.slice(0,4),d=r.slice().reverse().slice(0,4),W=ue(o),F=W.upcoming.slice(0,12),G=je(l),H=Ae(p),K=Te(h),q=Be(y);return{dashboard:t,current:s,projects:a,goals:c,areas:i,updates:r,birthdays:o,gratitude:l,events:p,fitness:h,warRoom:$,pool:y,sortedProjects:g,spotlightProject:w,topUpdate:k,activeProjects:j,highPriorityProjects:L,immediateMoves:S,laneGroups:P,hotProjects:N,recentUpdates:d,birthdaysState:W,allRecentBirthdays:F,gratitudeCard:G,eventsCard:H,fitnessCard:K,poolCard:q}}function z(e,t){const s=te(e,t);return`
     <div class="relative overflow-hidden">
       <div class="pointer-events-none absolute inset-0 opacity-60">
         <div class="absolute left-[-8rem] top-[-10rem] h-72 w-72 rounded-full bg-fire/12 blur-3xl"></div>
@@ -7,11 +7,11 @@
       </div>
 
       <main class="relative mx-auto flex min-h-screen w-full max-w-[1280px] flex-col gap-4 px-4 pb-16 pt-4 sm:px-6 lg:px-8 lg:pb-24 lg:pt-6">
-        ${K(e,t)}
-        ${t.name==="home"?T(e):s}
+        ${Y(e,t)}
+        ${t.name==="home"?C(e):s}
       </main>
     </div>
-  `}function K(e,t){return`
+  `}function Y(e,t){return`
     <section class="glass-card overflow-hidden p-4 sm:p-5 lg:p-6">
       <div class="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
         <div class="min-w-0">
@@ -35,21 +35,24 @@
         </div>
 
         <nav class="grid gap-2 sm:grid-cols-2 xl:w-[360px]">
-          ${u("#/","Overview",t.name==="home")}
-          ${u("#/prompt","Daily prompt",t.name==="prompt")}
-          ${u("#/birthdays","Birthdays",t.name==="birthdays")}
-          ${u("#/projects","Projects",t.name==="projects"||t.name==="project")}
-          ${u("#/updates","Updates",t.name==="updates")}
+          ${b("#/","Overview",t.name==="home")}
+          ${b("#/prompt","Daily prompt",t.name==="prompt")}
+          ${b("#/birthdays","Birthdays",t.name==="birthdays")}
+          ${b("#/pool","Survivor pool",t.name==="pool")}
+          ${b("#/projects","Projects",t.name==="projects"||t.name==="project")}
+          ${b("#/updates","Updates",t.name==="updates")}
         </nav>
       </div>
     </section>
-  `}function u(e,t,s=!1){return`<a class="nav-chip ${s?"nav-chip-active":""}" href="${e}">${t}</a>`}function T(e){var t;return`
-    ${I(e.gratitudeCard)}
+  `}function b(e,t,s=!1){return`<a class="nav-chip ${s?"nav-chip-active":""}" href="${e}">${t}</a>`}function C(e){var t;return`
+    ${R(e.gratitudeCard)}
 
     <section class="grid gap-4 xl:grid-cols-[1fr_1fr]">
-      ${ve(e.eventsCard)}
-      ${we(e.fitnessCard)}
+      ${Le(e.eventsCard)}
+      ${Pe(e.fitnessCard)}
     </section>
+
+    ${We(e.poolCard)}
 
     <section class="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
       <div class="stack-card compact-card">
@@ -61,33 +64,33 @@
           </div>
           <div class="flex flex-wrap gap-2">
             <span class="chip chip-warm">${e.immediateMoves.length} moves</span>
-            <span class="chip">Updated ${B(e.current.data.lastUpdated)}</span>
+            <span class="chip">Updated ${T(e.current.data.lastUpdated)}</span>
           </div>
         </div>
         <div class="mt-4 grid gap-3 md:grid-cols-3">
-          ${e.immediateMoves.map(ae).join("")}
+          ${e.immediateMoves.map(ne).join("")}
         </div>
       </div>
 
       <aside class="stack-card compact-card">
         <p class="section-kicker">Board status</p>
         <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-          ${g("Active projects",e.activeProjects.length,"Projects in motion right now.")}
-          ${g("High priority",e.highPriorityProjects.length,"Needs stronger attention.")}
-          ${g("Birthday radar",((t=e.birthdays.summary)==null?void 0:t.upcomingCount)??0,"Upcoming birthdays loaded.")}
-          ${g("System status",e.dashboard.stats.status,"Board is live and steerable.")}
+          ${m("Active projects",e.activeProjects.length,"Projects in motion right now.")}
+          ${m("High priority",e.highPriorityProjects.length,"Needs stronger attention.")}
+          ${m("Birthday radar",((t=e.birthdays.summary)==null?void 0:t.upcomingCount)??0,"Upcoming birthdays loaded.")}
+          ${m("System status",e.dashboard.stats.status,"Board is live and steerable.")}
         </div>
       </aside>
     </section>
 
     <section class="grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
-      ${q(e)}
-      ${V(e)}
+      ${Q(e)}
+      ${X(e)}
     </section>
 
     <section class="grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
-      ${J(e)}
-      ${z(e)}
+      ${Z(e)}
+      ${ee(e)}
     </section>
 
     <section class="grid gap-4 xl:grid-cols-[1fr_1fr]">
@@ -100,7 +103,7 @@
           <span class="chip">${e.laneGroups.length} lanes</span>
         </div>
         <div class="grid gap-3">
-          ${e.laneGroups.map(le).join("")}
+          ${e.laneGroups.map(de).join("")}
         </div>
       </section>
 
@@ -112,14 +115,14 @@
           </div>
         </div>
         <div class="grid gap-3 sm:grid-cols-2">
-          ${f("Now",e.current.data.primaryFocus,"orange")}
-          ${f("Next",e.current.data.next||[],"default")}
-          ${f("Blockers",e.current.data.blockers||[],"warning")}
-          ${f("Wins",e.current.data.wins||[],"success")}
+          ${u("Now",e.current.data.primaryFocus,"orange")}
+          ${u("Next",e.current.data.next||[],"default")}
+          ${u("Blockers",e.current.data.blockers||[],"warning")}
+          ${u("Wins",e.current.data.wins||[],"success")}
         </div>
       </section>
     </section>
-  `}function q(e){var c;const t=e.allRecentBirthdays.slice(0,4),s=t[0],a=(e.birthdaysState.byMonth.april||[]).length;return`
+  `}function Q(e){var c;const t=e.allRecentBirthdays.slice(0,4),s=t[0],a=(e.birthdaysState.byMonth.april||[]).length;return`
     <section class="stack-card compact-card">
       <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
@@ -137,7 +140,7 @@
         <article class="birthday-widget-hero compact-hero">
           <p class="micro-label text-fire">Next up</p>
           <h3 class="mt-2 text-2xl font-semibold tracking-[-0.03em] text-copy">${s?s.name:"All clear"}</h3>
-          <p class="mt-2 text-sm leading-6 text-copy-soft">${s?`${s.dateLabel} · ${W(s.daysAway)} · ${s.relationship||"Contact"}`:"No birthdays loaded in the current lookahead."}</p>
+          <p class="mt-2 text-sm leading-6 text-copy-soft">${s?`${s.dateLabel} · ${O(s.daysAway)} · ${s.relationship||"Contact"}`:"No birthdays loaded in the current lookahead."}</p>
           <div class="mt-4 flex flex-wrap gap-2">
             <span class="chip chip-warm">${((c=e.birthdays.summary)==null?void 0:c.upcomingCount)??0} upcoming</span>
             <span class="chip">April · ${a}</span>
@@ -149,7 +152,7 @@
         </div>
       </div>
     </section>
-  `}function V(e){return`
+  `}function X(e){return`
     <section class="stack-card compact-card">
       <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
@@ -160,10 +163,10 @@
         <a class="chip chip-warm" href="#/projects">Open all projects</a>
       </div>
       <div class="grid gap-3">
-        ${e.hotProjects.map((t,s)=>ie(t,s+1)).join("")}
+        ${e.hotProjects.map((t,s)=>oe(t,s+1)).join("")}
       </div>
     </section>
-  `}function J(e){const t=e.spotlightProject;return`
+  `}function Z(e){const t=e.spotlightProject;return`
     <section class="stack-card compact-card">
       <div class="mb-4 flex items-end justify-between gap-4">
         <div>
@@ -176,8 +179,8 @@
         <article class="rounded-[24px] border border-line bg-white/[0.04] p-5">
           <div class="flex flex-wrap items-center gap-2">
             <span class="chip chip-warm">${t.data.status}</span>
-            <span class="chip">${h(t.data.priority)} priority</span>
-            <span class="chip">${d(t.data.area)}</span>
+            <span class="chip">${f(t.data.priority)} priority</span>
+            <span class="chip">${x(t.data.area)}</span>
           </div>
           <h3 class="mt-4 text-2xl font-semibold tracking-[-0.03em] text-copy">${t.data.title}</h3>
           <p class="mt-3 text-sm leading-6 text-copy-soft">${t.data.summary}</p>
@@ -188,7 +191,7 @@
         </article>
       `:'<p class="text-sm text-copy-soft">No spotlight project loaded yet.</p>'}
     </section>
-  `}function z(e){return`
+  `}function ee(e){return`
     <section class="stack-card compact-card">
       <div class="mb-4 flex items-end justify-between gap-4">
         <div>
@@ -198,10 +201,10 @@
         <a class="chip chip-warm" href="#/updates">Open feed</a>
       </div>
       <div class="grid gap-3">
-        ${e.recentUpdates.map(C).join("")}
+        ${e.recentUpdates.map(D).join("")}
       </div>
     </section>
-  `}function Y(e,t){return t.name==="prompt"?Q(e):t.name==="birthdays"?X(e,t):t.name==="projects"?Z(e):t.name==="project"?ee(e,t.slug):t.name==="updates"?se(e):T(e)}function Q(e){return`
+  `}function te(e,t){return t.name==="prompt"?se(e):t.name==="birthdays"?ae(e,t):t.name==="pool"?Ce(e):t.name==="projects"?ie(e):t.name==="project"?ce(e,t.slug):t.name==="updates"?re(e):C(e)}function se(e){return`
     <section class="stack-card compact-card">
       <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
@@ -215,8 +218,8 @@
       </div>
     </section>
 
-    ${I(e.gratitudeCard)}
-  `}function X(e,t){const s=t.month?h(t.month):null,a=t.month?e.birthdaysState.byMonth[t.month]||[]:[],c=e.birthdaysState.monthOrder.filter(i=>(e.birthdaysState.byMonth[i]||[]).length);return`
+    ${R(e.gratitudeCard)}
+  `}function ae(e,t){const s=t.month?f(t.month):null,a=t.month?e.birthdaysState.byMonth[t.month]||[]:[],c=e.birthdaysState.monthOrder.filter(i=>(e.birthdaysState.byMonth[i]||[]).length);return`
     <section class="stack-card compact-card">
       <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
@@ -226,7 +229,7 @@
         </div>
         <div class="flex flex-wrap gap-2">
           <a class="chip" href="#/">Back to overview</a>
-          ${c.map(i=>`<a class="chip ${t.month===i?"chip-warm":""}" href="#/birthdays/${i}">${h(i)}</a>`).join("")}
+          ${c.map(i=>`<a class="chip ${t.month===i?"chip-warm":""}" href="#/birthdays/${i}">${f(i)}</a>`).join("")}
         </div>
       </div>
     </section>
@@ -241,7 +244,7 @@
           <span class="chip chip-warm">${a.length} people</span>
         </div>
         <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-          ${a.map(i=>oe(i)).join("")}
+          ${a.map(i=>xe(i)).join("")}
         </div>
       </section>
     `:`
@@ -267,12 +270,12 @@
             </div>
           </div>
           <div class="grid gap-3 sm:grid-cols-2">
-            ${c.map(i=>re(i,e.birthdaysState.byMonth[i])).join("")}
+            ${c.map(i=>me(i,e.birthdaysState.byMonth[i])).join("")}
           </div>
         </section>
       </section>
     `}
-  `}function Z(e){return`
+  `}function ie(e){return`
     <section class="stack-card compact-card">
       <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
@@ -285,9 +288,9 @@
     </section>
 
     <section class="grid gap-4 md:grid-cols-2">
-      ${e.sortedProjects.map(t=>ne(t)).join("")}
+      ${e.sortedProjects.map(t=>ge(t)).join("")}
     </section>
-  `}function ee(e,t){const s=e.sortedProjects.find(i=>i.data.slug===t);if(!s)return`
+  `}function ce(e,t){const s=e.sortedProjects.find(i=>i.data.slug===t);if(!s)return`
       <section class="stack-card compact-card">
         <p class="section-kicker">Project</p>
         <h2 class="text-3xl font-semibold tracking-[-0.03em] text-copy">Project not found</h2>
@@ -296,7 +299,7 @@
           <a class="chip chip-warm" href="#/projects">Back to projects</a>
         </div>
       </section>
-    `;const a=e.updates.slice().reverse().filter(i=>{const l=`${i.data.title||""} ${i.content||""}`.toLowerCase();return l.includes((s.data.title||"").toLowerCase())||l.includes((t||"").replace(/-/g," "))}).slice(0,4),c=t==="sick-sales-war-room"?te(e.warRoom):"";return`
+    `;const a=e.updates.slice().reverse().filter(i=>{const r=`${i.data.title||""} ${i.content||""}`.toLowerCase();return r.includes((s.data.title||"").toLowerCase())||r.includes((t||"").replace(/-/g," "))}).slice(0,4),c=t==="sick-sales-war-room"?le(e.warRoom):"";return`
     <section class="stack-card compact-card">
       <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
@@ -306,7 +309,7 @@
         </div>
         <div class="flex flex-wrap gap-2">
           <a class="chip" href="#/projects">Back to projects</a>
-          ${Object.entries(s.data.links||{}).map(([i,l])=>he(i,l)).join("")}
+          ${Object.entries(s.data.links||{}).map(([i,r])=>ve(i,r)).join("")}
         </div>
       </div>
     </section>
@@ -320,15 +323,15 @@
           </div>
           <div class="detail-stat">
             <p class="micro-label text-copy-faint">Priority</p>
-            <p class="mt-2 text-lg font-semibold text-copy">${h(s.data.priority)}</p>
+            <p class="mt-2 text-lg font-semibold text-copy">${f(s.data.priority)}</p>
           </div>
           <div class="detail-stat">
             <p class="micro-label text-copy-faint">Area</p>
-            <p class="mt-2 text-lg font-semibold text-copy">${d(s.data.area)}</p>
+            <p class="mt-2 text-lg font-semibold text-copy">${x(s.data.area)}</p>
           </div>
           <div class="detail-stat">
             <p class="micro-label text-copy-faint">Updated</p>
-            <p class="mt-2 text-lg font-semibold text-copy">${B(s.data.lastUpdated)}</p>
+            <p class="mt-2 text-lg font-semibold text-copy">${T(s.data.lastUpdated)}</p>
           </div>
         </div>
 
@@ -340,7 +343,7 @@
 
       <section class="stack-card compact-card">
         <p class="section-kicker">Why it exists</p>
-        <div class="project-copy">${ge(s.content)}</div>
+        <div class="project-copy">${$e(s.content)}</div>
       </section>
     </section>
 
@@ -356,7 +359,7 @@
           <span class="chip chip-warm">${a.length} linked</span>
         </div>
         <div class="grid gap-3">
-          ${a.length?a.map(C).join(""):'<article class="rounded-[22px] border border-line bg-white/[0.04] p-4"><p class="text-sm leading-6 text-copy-soft">No linked updates yet. This page is ready for them.</p></article>'}
+          ${a.length?a.map(D).join(""):'<article class="rounded-[22px] border border-line bg-white/[0.04] p-4"><p class="text-sm leading-6 text-copy-soft">No linked updates yet. This page is ready for them.</p></article>'}
         </div>
       </section>
 
@@ -370,7 +373,7 @@
         <div class="grid gap-3">
           <article class="rounded-[22px] border border-line bg-white/[0.04] p-4">
             <p class="micro-label text-fire">Current role</p>
-            <p class="mt-2 text-sm leading-6 text-copy-soft">This project lives in the ${d(s.data.area)} lane and is being tracked as ${s.data.status}.</p>
+            <p class="mt-2 text-sm leading-6 text-copy-soft">This project lives in the ${x(s.data.area)} lane and is being tracked as ${s.data.status}.</p>
           </article>
           <article class="rounded-[22px] border border-line bg-white/[0.04] p-4">
             <p class="micro-label text-fire">Why it matters</p>
@@ -379,7 +382,7 @@
         </div>
       </section>
     </section>
-  `}function te(e={}){var p,x,b,m,v,$,w,k,j,L,P,S;const t=e.recommendation||null,s=e.todayBoard||{},a=e.executionAssets||{},c=((p=e.summary)==null?void 0:p.buckets)||{},i=Array.isArray(e.topPush)?e.topPush.slice(0,5):[],l=Array.isArray(e.topBundle)?e.topBundle.slice(0,5):[],o=Array.isArray(e.protect)?e.protect.slice(0,5):[],r=Array.isArray(e.outWinners)?e.outWinners.slice(0,5):[];return`
+  `}function le(e={}){var p,h,$,y,g,w,k,j,L,S,P,N;const t=e.recommendation||null,s=e.todayBoard||{},a=e.executionAssets||{},c=((p=e.summary)==null?void 0:p.buckets)||{},i=Array.isArray(e.topPush)?e.topPush.slice(0,5):[],r=Array.isArray(e.topBundle)?e.topBundle.slice(0,5):[],o=Array.isArray(e.protect)?e.protect.slice(0,5):[],l=Array.isArray(e.outWinners)?e.outWinners.slice(0,5):[];return`
     <section class="grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
       <section class="stack-card compact-card">
         <div class="mb-4 flex items-end justify-between gap-4">
@@ -387,7 +390,7 @@
             <p class="section-kicker">War room data</p>
             <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">Current recommendation</h3>
           </div>
-          <span class="chip chip-warm">${((x=e.summary)==null?void 0:x.actionableRows)??0} actionable rows</span>
+          <span class="chip chip-warm">${((h=e.summary)==null?void 0:h.actionableRows)??0} actionable rows</span>
         </div>
 
         ${t?`
@@ -399,16 +402,16 @@
             ${t.offer?`<p class="mt-2 text-sm leading-6 text-copy"><span class="text-copy-faint">Offer:</span> ${t.offer}</p>`:""}
             ${t.inventoryReality?`<p class="mt-2 text-sm leading-6 text-copy"><span class="text-copy-faint">Inventory read:</span> ${t.inventoryReality}</p>`:""}
             <div class="mt-4 flex flex-wrap gap-2">
-              ${(t.why||[]).map(n=>`<span class="chip">${n}</span>`).join("")}
+              ${(t.why||[]).map(d=>`<span class="chip">${d}</span>`).join("")}
             </div>
           </article>
         `:'<article class="rounded-[24px] border border-line bg-white/[0.04] p-5"><p class="text-sm leading-6 text-copy-soft">No recommendation generated yet.</p></article>'}
 
         <div class="mt-4 grid gap-3 sm:grid-cols-2">
-          ${g("Push What Is Left",c["Push What Is Left"]??0,"Best remaining in-stock products to feature now.")}
-          ${g("Bundle / Test",c["Bundle / Test"]??0,"Use as add-ons, offer fillers, and test candidates.")}
-          ${g("Protect / Low Stock",c["Protect / Low Stock"]??0,"Good sellers with thin inventory — use carefully.")}
-          ${g("Out of Stock Winners",c["Out of Stock Winners"]??0,"Strong demand signals that need restock or replacement.")}
+          ${m("Push What Is Left",c["Push What Is Left"]??0,"Best remaining in-stock products to feature now.")}
+          ${m("Bundle / Test",c["Bundle / Test"]??0,"Use as add-ons, offer fillers, and test candidates.")}
+          ${m("Protect / Low Stock",c["Protect / Low Stock"]??0,"Good sellers with thin inventory — use carefully.")}
+          ${m("Out of Stock Winners",c["Out of Stock Winners"]??0,"Strong demand signals that need restock or replacement.")}
         </div>
       </section>
 
@@ -420,11 +423,11 @@
           </div>
         </div>
         <div class="grid gap-3 sm:grid-cols-2">
-          ${f("Now",s.now||[],"orange")}
-          ${f("Next",s.next||[],"default")}
-          ${f("Watch",s.watch||[],"warning")}
-          ${f("Problems",s.problems||[],"warning")}
-          <div class="sm:col-span-2">${f("Moves",s.moves||[],"success")}</div>
+          ${u("Now",s.now||[],"orange")}
+          ${u("Next",s.next||[],"default")}
+          ${u("Watch",s.watch||[],"warning")}
+          ${u("Problems",s.problems||[],"warning")}
+          <div class="sm:col-span-2">${u("Moves",s.moves||[],"success")}</div>
         </div>
       </section>
     </section>
@@ -439,28 +442,28 @@
       <div class="grid gap-3 xl:grid-cols-2">
         <article class="rounded-[22px] border border-line bg-white/[0.04] p-4">
           <p class="micro-label text-fire">Homepage slot</p>
-          <h4 class="mt-3 text-lg font-semibold text-copy">${((b=a.homepage)==null?void 0:b.headline)||"No homepage slot loaded."}</h4>
-          ${(m=a.homepage)!=null&&m.subhead?`<p class="mt-2 text-sm leading-6 text-copy-soft">${a.homepage.subhead}</p>`:""}
+          <h4 class="mt-3 text-lg font-semibold text-copy">${(($=a.homepage)==null?void 0:$.headline)||"No homepage slot loaded."}</h4>
+          ${(y=a.homepage)!=null&&y.subhead?`<p class="mt-2 text-sm leading-6 text-copy-soft">${a.homepage.subhead}</p>`:""}
           <div class="mt-3 flex flex-wrap gap-2">
-            ${(v=a.homepage)!=null&&v.kicker?`<span class="chip chip-warm">${a.homepage.kicker}</span>`:""}
-            ${($=a.homepage)!=null&&$.cta?`<span class="chip">CTA: ${a.homepage.cta}</span>`:""}
+            ${(g=a.homepage)!=null&&g.kicker?`<span class="chip chip-warm">${a.homepage.kicker}</span>`:""}
+            ${(w=a.homepage)!=null&&w.cta?`<span class="chip">CTA: ${a.homepage.cta}</span>`:""}
           </div>
         </article>
         <article class="rounded-[22px] border border-line bg-white/[0.04] p-4">
           <p class="micro-label text-fire">Email angle</p>
-          ${(w=a.email)!=null&&w.subject?`<p class="mt-3 text-sm leading-6 text-copy"><span class="text-copy-faint">Subject:</span> ${a.email.subject}</p>`:""}
-          ${(k=a.email)!=null&&k.preview?`<p class="mt-2 text-sm leading-6 text-copy"><span class="text-copy-faint">Preview:</span> ${a.email.preview}</p>`:""}
-          ${(j=a.email)!=null&&j.body?`<p class="mt-3 text-sm leading-6 text-copy-soft">${a.email.body}</p>`:""}
+          ${(k=a.email)!=null&&k.subject?`<p class="mt-3 text-sm leading-6 text-copy"><span class="text-copy-faint">Subject:</span> ${a.email.subject}</p>`:""}
+          ${(j=a.email)!=null&&j.preview?`<p class="mt-2 text-sm leading-6 text-copy"><span class="text-copy-faint">Preview:</span> ${a.email.preview}</p>`:""}
+          ${(L=a.email)!=null&&L.body?`<p class="mt-3 text-sm leading-6 text-copy-soft">${a.email.body}</p>`:""}
         </article>
         <article class="rounded-[22px] border border-line bg-white/[0.04] p-4 xl:col-span-2">
           <p class="micro-label text-fire">IG story frames</p>
-          <ul class="mt-3 list-dot space-y-2 pl-5 text-sm leading-6 text-copy-soft">${(a.igStory||[]).map(n=>`<li>${n}</li>`).join("")}</ul>
+          <ul class="mt-3 list-dot space-y-2 pl-5 text-sm leading-6 text-copy-soft">${(a.igStory||[]).map(d=>`<li>${d}</li>`).join("")}</ul>
         </article>
         <article class="rounded-[22px] border border-line bg-white/[0.04] p-4 xl:col-span-2">
           <p class="micro-label text-fire">KPI target</p>
-          <h4 class="mt-3 text-lg font-semibold text-copy">${((L=a.kpi)==null?void 0:L.title)||"Tonight's read"}</h4>
+          <h4 class="mt-3 text-lg font-semibold text-copy">${((S=a.kpi)==null?void 0:S.title)||"Tonight's read"}</h4>
           ${(P=a.kpi)!=null&&P.target?`<p class="mt-2 text-sm leading-6 text-copy-soft">${a.kpi.target}</p>`:""}
-          ${(S=a.kpi)!=null&&S.rule?`<p class="mt-2 text-sm leading-6 text-copy"><span class="text-copy-faint">Rule:</span> ${a.kpi.rule}</p>`:""}
+          ${(N=a.kpi)!=null&&N.rule?`<p class="mt-2 text-sm leading-6 text-copy"><span class="text-copy-faint">Rule:</span> ${a.kpi.rule}</p>`:""}
         </article>
       </div>
     </section>
@@ -475,23 +478,23 @@
       <div class="grid gap-3 xl:grid-cols-2">
         <article class="rounded-[22px] border border-line bg-white/[0.04] p-4">
           <p class="micro-label text-fire">Push what is left</p>
-          <div class="mt-3 grid gap-3">${i.length?i.map(n=>N(n)).join(""):'<p class="text-sm leading-6 text-copy-soft">No immediate in-stock push items found.</p>'}</div>
+          <div class="mt-3 grid gap-3">${i.length?i.map(d=>A(d)).join(""):'<p class="text-sm leading-6 text-copy-soft">No immediate in-stock push items found.</p>'}</div>
         </article>
         <article class="rounded-[22px] border border-line bg-white/[0.04] p-4">
           <p class="micro-label text-fire">Bundle / test</p>
-          <div class="mt-3 grid gap-3">${l.length?l.map(n=>N(n)).join(""):'<p class="text-sm leading-6 text-copy-soft">No bundle candidates found.</p>'}</div>
+          <div class="mt-3 grid gap-3">${r.length?r.map(d=>A(d)).join(""):'<p class="text-sm leading-6 text-copy-soft">No bundle candidates found.</p>'}</div>
         </article>
         <article class="rounded-[22px] border border-line bg-white/[0.04] p-4">
           <p class="micro-label text-fire">Protect / low stock</p>
-          <div class="mt-3 grid gap-3">${o.length?o.map(n=>N(n)).join(""):'<p class="text-sm leading-6 text-copy-soft">No low-stock protect items found.</p>'}</div>
+          <div class="mt-3 grid gap-3">${o.length?o.map(d=>A(d)).join(""):'<p class="text-sm leading-6 text-copy-soft">No low-stock protect items found.</p>'}</div>
         </article>
         <article class="rounded-[22px] border border-line bg-white/[0.04] p-4">
           <p class="micro-label text-fire">Out of stock winners</p>
-          <div class="mt-3 grid gap-3">${r.length?r.map(n=>N(n)).join(""):'<p class="text-sm leading-6 text-copy-soft">No out-of-stock demand signals found.</p>'}</div>
+          <div class="mt-3 grid gap-3">${l.length?l.map(d=>A(d)).join(""):'<p class="text-sm leading-6 text-copy-soft">No out-of-stock demand signals found.</p>'}</div>
         </article>
       </div>
     </section>
-  `}function N(e){return`
+  `}function A(e){return`
     <article class="phase-lane-item phase-lane-item-compact">
       <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
@@ -508,7 +511,7 @@
       </div>
       ${e.note?`<p class="mt-2 text-sm leading-6 text-copy-faint">${e.note}</p>`:""}
     </article>
-  `}function se(e){return`
+  `}function re(e){return`
     <section class="stack-card compact-card">
       <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
@@ -521,9 +524,9 @@
     </section>
 
     <section class="grid gap-3">
-      ${e.updates.slice().reverse().map(ce).join("")}
+      ${e.updates.slice().reverse().map(pe).join("")}
     </section>
-  `}function ae(e){return`
+  `}function ne(e){return`
     <article class="rounded-[24px] border border-fire/18 bg-fire-soft p-4">
       <div class="flex flex-wrap items-center justify-between gap-3">
         <p class="micro-label text-fire">${e.lane}</p>
@@ -532,7 +535,7 @@
       <h3 class="mt-3 text-lg font-semibold tracking-[-0.03em] text-copy">${e.title}</h3>
       <p class="mt-2 text-sm leading-6 text-copy-soft">${e.action}</p>
     </article>
-  `}function g(e,t,s){return`
+  `}function m(e,t,s){return`
     <article class="stat-card compact-stat-card">
       <div>
         <p class="micro-label text-copy-faint">${e}</p>
@@ -540,14 +543,14 @@
       </div>
       <strong class="text-right text-2xl font-semibold tracking-[-0.04em] text-copy sm:text-3xl">${t}</strong>
     </article>
-  `}function ie(e,t){return`
+  `}function oe(e,t){return`
     <a class="project-row" href="#/projects/${e.data.slug}">
       <div class="project-row-rank">${t}</div>
       <div class="min-w-0 flex-1">
         <div class="flex flex-wrap items-center gap-2">
           <span class="chip chip-warm">${e.data.status}</span>
-          <span class="chip">${h(e.data.priority)} priority</span>
-          <span class="chip">${d(e.data.area)}</span>
+          <span class="chip">${f(e.data.priority)} priority</span>
+          <span class="chip">${x(e.data.area)}</span>
         </div>
         <h3 class="mt-3 text-lg font-semibold text-copy">${e.data.title}</h3>
         <p class="mt-2 text-sm leading-6 text-copy-soft">${e.data.summary}</p>
@@ -555,34 +558,34 @@
       </div>
       <div class="project-row-arrow">↗</div>
     </a>
-  `}function C(e){return`
+  `}function D(e){return`
     <article class="rounded-[22px] border border-line bg-white/[0.04] p-4">
       <div class="flex flex-wrap items-center justify-between gap-3">
-        <p class="micro-label text-fire">${B(e.data.date)}</p>
+        <p class="micro-label text-fire">${T(e.data.date)}</p>
         <span class="chip">${e.data.kind}</span>
       </div>
       <h3 class="mt-3 text-lg font-semibold text-copy">${e.data.title}</h3>
       <p class="mt-2 text-sm leading-6 text-copy-soft">${e.content}</p>
     </article>
-  `}function ce(e){return`
+  `}function pe(e){return`
     <article class="rounded-[24px] border border-line bg-white/[0.04] p-5">
       <div class="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p class="micro-label text-fire">${B(e.data.date)}</p>
+          <p class="micro-label text-fire">${T(e.data.date)}</p>
           <h3 class="mt-3 text-xl font-semibold text-copy">${e.data.title}</h3>
         </div>
         <span class="chip chip-warm">${e.data.kind}</span>
       </div>
       <p class="mt-3 text-sm leading-7 text-copy-soft">${e.content}</p>
     </article>
-  `}function f(e,t=[],s="default"){const a=t.length?t:["Nothing loaded yet."],c={orange:"border-fire/25 bg-fire-soft",warning:"border-amber-400/20 bg-amber-400/10",success:"border-emerald-400/20 bg-emerald-400/10",default:"border-line bg-white/5"};return`
+  `}function u(e,t=[],s="default"){const a=t.length?t:["Nothing loaded yet."],c={orange:"border-fire/25 bg-fire-soft",warning:"border-amber-400/20 bg-amber-400/10",success:"border-emerald-400/20 bg-emerald-400/10",default:"border-line bg-white/5"};return`
     <article class="glass-card p-4 ${c[s]||c.default}">
       <p class="section-kicker">${e}</p>
       <ul class="list-dot space-y-2 pl-5 text-sm leading-6 text-copy-soft">
         ${a.map(i=>`<li>${i}</li>`).join("")}
       </ul>
     </article>
-  `}function le(e){return`
+  `}function de(e){return`
     <article class="lane-card compact-lane-card">
       <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
@@ -597,10 +600,10 @@
       </div>
     </article>
   `}function M(e,t=!1){return`
-    <a class="birthday-week-item ${t?"birthday-week-item-compact":""}" href="#/birthdays/${D(e.dateLabel)}">
+    <a class="birthday-week-item ${t?"birthday-week-item-compact":""}" href="#/birthdays/${I(e.dateLabel)}">
       <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p class="micro-label text-fire">${W(e.daysAway)}</p>
+          <p class="micro-label text-fire">${O(e.daysAway)}</p>
           <h3 class="mt-2 text-lg font-semibold text-copy">${e.name}</h3>
           <p class="mt-2 text-sm leading-6 text-copy-soft">${[e.relationship,e.category].filter(Boolean).join(" · ")}</p>
         </div>
@@ -608,18 +611,18 @@
       </div>
       ${e.interests||e.profile||e.leadTime?`<p class="mt-3 text-sm leading-6 text-copy-faint">${[e.leadTime?`Prep: ${e.leadTime}`:"",e.interests?`Likes: ${e.interests}`:"",e.profile].filter(Boolean).join(" · ")}</p>`:""}
     </a>
-  `}function re(e,t=[]){var a;const s=((a=t[0])==null?void 0:a.name)||"No one loaded";return`
+  `}function me(e,t=[]){var a;const s=((a=t[0])==null?void 0:a.name)||"No one loaded";return`
     <a class="month-card" href="#/birthdays/${e}">
       <div class="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p class="micro-label text-fire">Month</p>
-          <h3 class="mt-2 text-xl font-semibold text-copy">${h(e)}</h3>
+          <h3 class="mt-2 text-xl font-semibold text-copy">${f(e)}</h3>
         </div>
         <span class="chip chip-warm">${t.length}</span>
       </div>
       <p class="mt-3 text-sm leading-6 text-copy-soft">Next listed: ${s}</p>
     </a>
-  `}function oe(e){return`
+  `}function xe(e){return`
     <article class="rounded-[24px] border border-line bg-white/[0.04] p-5">
       <div class="flex flex-wrap items-center justify-between gap-3">
         <p class="micro-label text-fire">${e.dateLabel}</p>
@@ -633,11 +636,11 @@
         ${e.leadTime?`<p><span class="text-copy">Prep:</span> ${e.leadTime}</p>`:""}
       </div>
     </article>
-  `}function ne(e){return`
+  `}function ge(e){return`
     <a class="rounded-[26px] border border-line bg-white/[0.04] p-5 transition duration-150 hover:border-fire/25 hover:bg-fire-soft" href="#/projects/${e.data.slug}">
       <div class="flex flex-wrap items-center justify-between gap-3">
         <span class="chip chip-warm">${e.data.status}</span>
-        <span class="chip">${h(e.data.priority)} priority</span>
+        <span class="chip">${f(e.data.priority)} priority</span>
       </div>
       <h3 class="mt-4 text-2xl font-semibold tracking-[-0.03em] text-copy">${e.data.title}</h3>
       <p class="mt-3 text-sm leading-6 text-copy-soft">${e.data.summary}</p>
@@ -647,8 +650,8 @@
       </div>
       <p class="mt-4 text-sm text-fire">Open project detail →</p>
     </a>
-  `}function pe(e,t=[]){var c;const s=[];return(Array.isArray((c=e==null?void 0:e.data)==null?void 0:c.next)?e.data.next:[]).slice(0,2).forEach((i,l)=>{s.push({lane:l===0?"Right now":"On deck",tag:"Board move",title:i,summary:"Pulled from the live command deck.",action:i})}),t.filter(i=>String(i.data.priority||"").toLowerCase()==="high").slice(0,2).forEach(i=>{s.push({lane:d(i.data.area||"project"),tag:`${h(i.data.priority||"active")} priority`,title:i.data.title,summary:i.data.summary,action:i.data.nextAction})}),s.slice(0,3)}function de(e=[],t=[]){return e.map(s=>({label:"Lane",title:s.data.title,summary:s.data.summary,slug:s.data.slug,projects:t.filter(a=>a.data.area===s.data.slug).sort(U).slice(0,3)})).sort((s,a)=>a.projects.length-s.projects.length||s.title.localeCompare(a.title))}function me(e={}){const t=Array.isArray(e.upcoming)?e.upcoming.slice().sort((c,i)=>c.daysAway-i.daysAway||c.name.localeCompare(i.name)):[],s={};return t.forEach(c=>{const i=D(c.dateLabel);s[i]||(s[i]=[]),s[i].push(c)}),{upcoming:t,byMonth:s,monthOrder:["january","february","march","april","may","june","july","august","september","october","november","december"]}}function xe(e,t,s){if(s.name==="home"){const a=e.querySelector("[data-home-scroll]");a&&a.scrollIntoView({block:"start"})}}function fe(e){const s=(String(e||"#/").replace(/^#/,"")||"/").split("/").filter(Boolean);return s.length?s[0]==="prompt"?{name:"prompt"}:s[0]==="birthdays"&&s[1]?{name:"birthdays",month:s[1].toLowerCase()}:s[0]==="birthdays"?{name:"birthdays"}:s[0]==="projects"&&s[1]?{name:"project",slug:s[1]}:s[0]==="projects"?{name:"projects"}:s[0]==="updates"?{name:"updates"}:{name:"home"}:{name:"home"}}function he(e,t){const s=d(e);return/^https?:\/\//i.test(t)?`<a class="chip hover:border-fire/35 hover:bg-fire-soft" href="${t}" target="_blank" rel="noreferrer">${s}</a>`:`<span class="chip">${s}: ${t}</span>`}function ge(e=""){return e.split(/\n\n+/).map(t=>{const s=t.split(`
-`).map(a=>a.trim()).filter(Boolean);if(!s.length)return"";if(s.every(a=>a.startsWith("- ")))return`<ul class="list-dot space-y-2 pl-5 text-sm leading-7 text-copy-soft">${s.map(a=>`<li>${a.replace(/^-\s*/,"")}</li>`).join("")}</ul>`;if(s[0].startsWith("## ")){const a=s[0].replace(/^##\s*/,""),c=s.slice(1).join(" ");return`<div class="space-y-2"><h3 class="text-lg font-semibold text-copy">${a}</h3>${c?`<p class="text-sm leading-7 text-copy-soft">${c}</p>`:""}</div>`}return`<p class="text-sm leading-7 text-copy-soft">${s.join(" ")}</p>`}).join("")}function D(e=""){return String(e).split(" ")[0].toLowerCase()}function d(e=""){return e.replace(/[-_]/g," ").replace(/\b\w/g,t=>t.toUpperCase())}function h(e=""){return e?e.charAt(0).toUpperCase()+e.slice(1):""}function U(e,t){const s={high:0,medium:1,low:2},a={active:0,queued:1,blocked:2,paused:3,idea:4,complete:5};return(s[String(e.data.priority||"").toLowerCase()]??9)-(s[String(t.data.priority||"").toLowerCase()]??9)||(a[String(e.data.status||"").toLowerCase()]??9)-(a[String(t.data.status||"").toLowerCase()]??9)||e.data.title.localeCompare(t.data.title)}function ue(e){if(typeof e=="string"){const t=e.match(/^(\d{4})-(\d{2})-(\d{2})$/);if(t){const[,s,a,c]=t;return new Date(Number(s),Number(a)-1,Number(c))}}return new Date(e)}function y(e){const t=ue(e);return Number.isNaN(t.getTime())?e:t.toLocaleDateString("en-US",{month:"short",day:"numeric"})}function B(e){const t=new Date(e);if(Number.isNaN(t.getTime()))return e;const s=new Date,a=new Date(s.getFullYear(),s.getMonth(),s.getDate()),c=new Date(t.getFullYear(),t.getMonth(),t.getDate()),i=Math.round((a-c)/864e5);return i===0?"today":i===1?"yesterday":t.toLocaleDateString("en-US",{month:"short",day:"numeric"})}function W(e){return e===0?"Today":e===1?"Tomorrow":`${e} days`}G();function I(e={}){const t=Array.isArray(e.history)?e.history:[];return`
+  `}function fe(e,t=[]){var c;const s=[];return(Array.isArray((c=e==null?void 0:e.data)==null?void 0:c.next)?e.data.next:[]).slice(0,2).forEach((i,r)=>{s.push({lane:r===0?"Right now":"On deck",tag:"Board move",title:i,summary:"Pulled from the live command deck.",action:i})}),t.filter(i=>String(i.data.priority||"").toLowerCase()==="high").slice(0,2).forEach(i=>{s.push({lane:x(i.data.area||"project"),tag:`${f(i.data.priority||"active")} priority`,title:i.data.title,summary:i.data.summary,action:i.data.nextAction})}),s.slice(0,3)}function he(e=[],t=[]){return e.map(s=>({label:"Lane",title:s.data.title,summary:s.data.summary,slug:s.data.slug,projects:t.filter(a=>a.data.area===s.data.slug).sort(U).slice(0,3)})).sort((s,a)=>a.projects.length-s.projects.length||s.title.localeCompare(a.title))}function ue(e={}){const t=Array.isArray(e.upcoming)?e.upcoming.slice().sort((c,i)=>c.daysAway-i.daysAway||c.name.localeCompare(i.name)):[],s={};return t.forEach(c=>{const i=I(c.dateLabel);s[i]||(s[i]=[]),s[i].push(c)}),{upcoming:t,byMonth:s,monthOrder:["january","february","march","april","may","june","july","august","september","october","november","december"]}}function be(e,t,s){if(s.name==="home"){const a=e.querySelector("[data-home-scroll]");a&&a.scrollIntoView({block:"start"})}}function ye(e){const s=(String(e||"#/").replace(/^#/,"")||"/").split("/").filter(Boolean);return s.length?s[0]==="prompt"?{name:"prompt"}:s[0]==="birthdays"&&s[1]?{name:"birthdays",month:s[1].toLowerCase()}:s[0]==="birthdays"?{name:"birthdays"}:s[0]==="pool"?{name:"pool"}:s[0]==="projects"&&s[1]?{name:"project",slug:s[1]}:s[0]==="projects"?{name:"projects"}:s[0]==="updates"?{name:"updates"}:{name:"home"}:{name:"home"}}function ve(e,t){const s=x(e);return/^https?:\/\//i.test(t)?`<a class="chip hover:border-fire/35 hover:bg-fire-soft" href="${t}" target="_blank" rel="noreferrer">${s}</a>`:`<span class="chip">${s}: ${t}</span>`}function $e(e=""){return e.split(/\n\n+/).map(t=>{const s=t.split(`
+`).map(a=>a.trim()).filter(Boolean);if(!s.length)return"";if(s.every(a=>a.startsWith("- ")))return`<ul class="list-dot space-y-2 pl-5 text-sm leading-7 text-copy-soft">${s.map(a=>`<li>${a.replace(/^-\s*/,"")}</li>`).join("")}</ul>`;if(s[0].startsWith("## ")){const a=s[0].replace(/^##\s*/,""),c=s.slice(1).join(" ");return`<div class="space-y-2"><h3 class="text-lg font-semibold text-copy">${a}</h3>${c?`<p class="text-sm leading-7 text-copy-soft">${c}</p>`:""}</div>`}return`<p class="text-sm leading-7 text-copy-soft">${s.join(" ")}</p>`}).join("")}function I(e=""){return String(e).split(" ")[0].toLowerCase()}function x(e=""){return e.replace(/[-_]/g," ").replace(/\b\w/g,t=>t.toUpperCase())}function f(e=""){return e?e.charAt(0).toUpperCase()+e.slice(1):""}function U(e,t){const s={high:0,medium:1,low:2},a={active:0,queued:1,blocked:2,paused:3,idea:4,complete:5};return(s[String(e.data.priority||"").toLowerCase()]??9)-(s[String(t.data.priority||"").toLowerCase()]??9)||(a[String(e.data.status||"").toLowerCase()]??9)-(a[String(t.data.status||"").toLowerCase()]??9)||e.data.title.localeCompare(t.data.title)}function we(e){if(typeof e=="string"){const t=e.match(/^(\d{4})-(\d{2})-(\d{2})$/);if(t){const[,s,a,c]=t;return new Date(Number(s),Number(a)-1,Number(c))}}return new Date(e)}function v(e){const t=we(e);return Number.isNaN(t.getTime())?e:t.toLocaleDateString("en-US",{month:"short",day:"numeric"})}function T(e){const t=new Date(e);if(Number.isNaN(t.getTime()))return e;const s=new Date,a=new Date(s.getFullYear(),s.getMonth(),s.getDate()),c=new Date(t.getFullYear(),t.getMonth(),t.getDate()),i=Math.round((a-c)/864e5);return i===0?"today":i===1?"yesterday":t.toLocaleDateString("en-US",{month:"short",day:"numeric"})}function O(e){return e===0?"Today":e===1?"Tomorrow":`${e} days`}V();function R(e={}){const t=Array.isArray(e.history)?e.history:[];return`
     <section class="glass-card p-5 sm:p-6 lg:p-7">
       <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
@@ -704,13 +707,13 @@
               <span class="chip">${t.length} loaded</span>
             </div>
             <div class="mt-4 space-y-3">
-              ${t.length?t.map(ye).join(""):'<p class="text-sm leading-6 text-copy-soft">No recent gratitude history loaded yet.</p>'}
+              ${t.length?t.map(ke).join(""):'<p class="text-sm leading-6 text-copy-soft">No recent gratitude history loaded yet.</p>'}
             </div>
           </article>
         </div>
       </div>
     </section>
-  `}function ye(e){return`
+  `}function ke(e){return`
     <article class="birthday-week-item birthday-week-item-compact">
       <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
@@ -721,7 +724,7 @@
       </div>
       ${e.responseSummary?`<p class="mt-3 text-sm leading-6 text-copy-soft">${e.responseSummary}</p>`:""}
     </article>
-  `}function be(e={}){var i,l,o;const t=e.today||{},s=Number(((i=e.settings)==null?void 0:i.showHistoryCount)||3),a=Array.isArray(e.history)?e.history.slice(0,s):[],c=String(t.status||"pending").toLowerCase();return{title:((l=e.settings)==null?void 0:l.title)||"Daily gratitude",subtitle:((o=e.settings)==null?void 0:o.subtitle)||"Keep today's prompt visible even when you answer it later at night.",promptTitle:c==="completed"?"Today's reflection is in":"Tonight's prompt is waiting",prompt:t.prompt,entryId:t.entryId,dateLabel:y(t.date),sourceLabel:t.source||"Telegram + dashboard",note:t.note,statusLabel:c==="completed"?"Completed":"Pending",statusDetail:c==="completed"?t.completedLabel||"Answered and logged.":"Visible here until you knock it out.",windowLabel:d(String(t.availableWindow||"morning-to-evening")),history:a.map(r=>({...r,dateLabel:y(r.date),statusLabel:String(r.status||"").toLowerCase()==="completed"?"Completed":h(r.status||"pending")}))}}function ve(e={}){const t=Array.isArray(e.upcoming)?e.upcoming:[];return`
+  `}function je(e={}){var i,r,o;const t=e.today||{},s=Number(((i=e.settings)==null?void 0:i.showHistoryCount)||3),a=Array.isArray(e.history)?e.history.slice(0,s):[],c=String(t.status||"pending").toLowerCase();return{title:((r=e.settings)==null?void 0:r.title)||"Daily gratitude",subtitle:((o=e.settings)==null?void 0:o.subtitle)||"Keep today's prompt visible even when you answer it later at night.",promptTitle:c==="completed"?"Today's reflection is in":"Tonight's prompt is waiting",prompt:t.prompt,entryId:t.entryId,dateLabel:v(t.date),sourceLabel:t.source||"Telegram + dashboard",note:t.note,statusLabel:c==="completed"?"Completed":"Pending",statusDetail:c==="completed"?t.completedLabel||"Answered and logged.":"Visible here until you knock it out.",windowLabel:x(String(t.availableWindow||"morning-to-evening")),history:a.map(l=>({...l,dateLabel:v(l.date),statusLabel:String(l.status||"").toLowerCase()==="completed"?"Completed":f(l.status||"pending")}))}}function Le(e={}){const t=Array.isArray(e.upcoming)?e.upcoming:[];return`
     <section class="stack-card compact-card">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
@@ -742,10 +745,10 @@
             <p class="mt-2 text-sm leading-6 text-copy">${e.nextMove}</p>
           </article>
         `:""}
-        ${t.length?t.map($e).join(""):'<article class="rounded-[22px] border border-line bg-white/[0.04] p-4"><p class="text-sm leading-6 text-copy-soft">No upcoming events loaded yet.</p></article>'}
+        ${t.length?t.map(Se).join(""):'<article class="rounded-[22px] border border-line bg-white/[0.04] p-4"><p class="text-sm leading-6 text-copy-soft">No upcoming events loaded yet.</p></article>'}
       </div>
     </section>
-  `}function $e(e){return`
+  `}function Se(e){return`
     <article class="phase-lane-item">
       <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
@@ -761,7 +764,7 @@
       ${e.nextMove?`<p class="mt-3 text-sm leading-6 text-copy"><span class="text-copy-faint">Next:</span> ${e.nextMove}</p>`:""}
       ${e.note?`<p class="mt-2 text-sm leading-6 text-copy-faint">${e.note}</p>`:""}
     </article>
-  `}function we(e={}){const t=Array.isArray(e.recent)?e.recent:[];return`
+  `}function Pe(e={}){const t=Array.isArray(e.recent)?e.recent:[];return`
     <section class="stack-card compact-card">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
@@ -799,13 +802,13 @@
               <span class="chip">${t.length} loaded</span>
             </div>
             <div class="mt-4 space-y-3">
-              ${t.length?t.map(ke).join(""):'<p class="text-sm leading-6 text-copy-soft">No recent workouts loaded yet.</p>'}
+              ${t.length?t.map(Ne).join(""):'<p class="text-sm leading-6 text-copy-soft">No recent workouts loaded yet.</p>'}
             </div>
           </article>
         </div>
       </div>
     </section>
-  `}function ke(e){return`
+  `}function Ne(e){return`
     <article class="phase-lane-item phase-lane-item-compact">
       <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
@@ -816,4 +819,185 @@
       </div>
       ${e.note?`<p class="mt-3 text-sm leading-6 text-copy-soft">${e.note}</p>`:""}
     </article>
-  `}function je(e={}){var a,c,i,l,o,r;const t=Number(((a=e.settings)==null?void 0:a.showUpcomingCount)||3),s=Array.isArray(e.upcoming)?e.upcoming.slice(0,t):[];return{title:((c=e.settings)==null?void 0:c.title)||"Event lane",subtitle:((i=e.settings)==null?void 0:i.subtitle)||"Upcoming DJ work, prep pressure, and the next thing that needs attention before go time.",statusLabel:d(String(((l=e.summary)==null?void 0:l.status)||"active")),seasonLabel:(o=e.summary)==null?void 0:o.season,nextMove:(r=e.summary)==null?void 0:r.note,upcoming:s.map(p=>({...p,dateLabel:y(p.date),statusLabel:d(String(p.status||"booked")),prepStageLabel:d(String(p.prepStage||"prep"))}))}}function Le(e={}){var c,i,l,o,r,p;const t=Number(((c=e.settings)==null?void 0:c.showRecentCount)||3),s=Array.isArray(e.recent)?e.recent.slice(0,t):[],a=e.nextSession||{};return{title:((i=e.settings)==null?void 0:i.title)||"Workout lane",subtitle:((l=e.settings)==null?void 0:l.subtitle)||"Training momentum, consistency streak, and the next session that keeps the body moving.",statusLabel:d(String(((o=e.summary)==null?void 0:o.status)||"active")),streakLabel:(r=e.summary)==null?void 0:r.streakLabel,note:(p=e.summary)==null?void 0:p.note,nextTitle:a.title,nextWindow:a.window,nextDateLabel:y(a.targetDate),nextGoal:a.goal,nextMove:a.nextMove,recent:s.map(x=>({...x,dateLabel:y(x.date),typeLabel:d(String(x.type||"session"))}))}}
+  `}function Ae(e={}){var a,c,i,r,o,l;const t=Number(((a=e.settings)==null?void 0:a.showUpcomingCount)||3),s=Array.isArray(e.upcoming)?e.upcoming.slice(0,t):[];return{title:((c=e.settings)==null?void 0:c.title)||"Event lane",subtitle:((i=e.settings)==null?void 0:i.subtitle)||"Upcoming DJ work, prep pressure, and the next thing that needs attention before go time.",statusLabel:x(String(((r=e.summary)==null?void 0:r.status)||"active")),seasonLabel:(o=e.summary)==null?void 0:o.season,nextMove:(l=e.summary)==null?void 0:l.note,upcoming:s.map(p=>({...p,dateLabel:v(p.date),statusLabel:x(String(p.status||"booked")),prepStageLabel:x(String(p.prepStage||"prep"))}))}}function Te(e={}){var c,i,r,o,l,p;const t=Number(((c=e.settings)==null?void 0:c.showRecentCount)||3),s=Array.isArray(e.recent)?e.recent.slice(0,t):[],a=e.nextSession||{};return{title:((i=e.settings)==null?void 0:i.title)||"Workout lane",subtitle:((r=e.settings)==null?void 0:r.subtitle)||"Training momentum, consistency streak, and the next session that keeps the body moving.",statusLabel:x(String(((o=e.summary)==null?void 0:o.status)||"active")),streakLabel:(l=e.summary)==null?void 0:l.streakLabel,note:(p=e.summary)==null?void 0:p.note,nextTitle:a.title,nextWindow:a.window,nextDateLabel:v(a.targetDate),nextGoal:a.goal,nextMove:a.nextMove,recent:s.map(h=>({...h,dateLabel:v(h.date),typeLabel:x(String(h.type||"session"))}))}}function Be(e={}){var a,c,i;const t=e.summary||{},s=Array.isArray(e.standings)?e.standings:[];return{title:((a=e.settings)==null?void 0:a.title)||"Survivor pool",subtitle:((c=e.settings)==null?void 0:c.subtitle)||"One pick a week. Survive and advance.",seasonLabel:e.settings?`${e.settings.season} ${e.settings.league}`:"",formatLabel:t.formatLabel||"",weekLabel:t.currentWeek?`Week ${t.currentWeek}`:"Preseason",weekStatusLabel:_(t.currentWeekStatus),deadlineLabel:((i=e.currentWeek)==null?void 0:i.deadlineLabel)||"TBD",aliveCount:t.aliveCount??0,eliminatedCount:t.eliminatedCount??0,entrantsTotal:t.entrantsTotal??0,potLabel:t.potLabel||"$0",picksIn:t.picksIn??0,picksNeeded:t.picksNeeded??0,championName:t.championName||null,leaders:s.slice(0,4),hasEntrants:s.length>0,warningCount:(e.warnings||[]).length}}function We(e={}){const t=e.picksNeeded?`${e.picksIn}/${e.picksNeeded} picks in`:"No picks needed yet";return`
+    <section class="stack-card compact-card">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="section-kicker">Survivor pool</p>
+          <h2 class="text-2xl font-semibold tracking-[-0.03em] text-copy">${n(e.title)}</h2>
+          <p class="mt-2 text-sm leading-6 text-copy-soft">${n(e.subtitle)}</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="chip chip-warm">${n(e.weekLabel)}</span>
+          <span class="chip">${n(e.potLabel)} pot</span>
+        </div>
+      </div>
+
+      <div class="mt-4 grid gap-3">
+        <article class="rounded-[22px] border border-fire/18 bg-fire-soft p-4">
+          <p class="micro-label text-fire">${n(e.weekStatusLabel)}</p>
+          <p class="mt-2 text-sm leading-6 text-copy">
+            ${e.championName?`<strong>${n(e.championName)}</strong> is the last player standing.`:`${e.aliveCount} alive · ${e.eliminatedCount} out · ${t}.`}
+          </p>
+          <p class="mt-2 text-sm leading-6 text-copy-faint">Picks lock ${n(e.deadlineLabel)}.</p>
+        </article>
+
+        ${e.hasEntrants?`<div class="grid gap-3">${e.leaders.map(s=>E(s,!0)).join("")}</div>`:'<article class="rounded-[22px] border border-line bg-white/[0.04] p-4"><p class="text-sm leading-6 text-copy-soft">No entrants yet. Add players with <code>npm run pool -- --add-entrant="Name"</code>.</p></article>'}
+
+        <a class="chip justify-center" href="#/pool">Open the full pool board →</a>
+      </div>
+    </section>
+  `}function Ce(e){const t=e.pool||{},s=t.summary||{},a=t.settings||{},c=Array.isArray(t.standings)?t.standings:[],i=Array.isArray(t.weeks)?t.weeks:[],r=Array.isArray(t.warnings)?t.warnings:[],o=t.currentWeek;return`
+    <section class="stack-card compact-card">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="section-kicker">Survivor pool</p>
+          <h2 class="text-3xl font-semibold tracking-[-0.03em] text-copy">${n(a.title||"Survivor pool")}</h2>
+          <p class="mt-2 max-w-2xl text-sm leading-6 text-copy-soft">${n(a.subtitle||"")}</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a class="chip" href="#/">Back to overview</a>
+          <span class="chip chip-warm">${n(s.formatLabel||"")}</span>
+          <span class="chip">${n(String(a.season||""))} ${n(a.league||"")}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      ${m("Still alive",s.aliveCount??0,`${s.entrantsTotal??0} entered this season.`)}
+      ${m("Eliminated",s.eliminatedCount??0,`${a.strikesToEliminate??2} strikes ends a run.`)}
+      ${m(s.currentWeek?`Week ${s.currentWeek}`:"Preseason",`${s.picksIn??0}/${s.picksNeeded??0}`,`Picks in. Locks ${n((o==null?void 0:o.deadlineLabel)||"TBD")}.`)}
+      ${m("Pot",s.potLabel||"$0",`${n(Ie(a.entryFee,a.currency))} per entry.`)}
+    </section>
+
+    ${r.length?`
+      <section class="stack-card compact-card">
+        <p class="section-kicker">Commissioner attention</p>
+        <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">${r.length} thing${r.length===1?"":"s"} to resolve</h3>
+        <div class="mt-4 grid gap-3">
+          ${r.map(l=>`
+            <article class="rounded-[22px] border border-amber-400/25 bg-amber-400/10 p-4">
+              <p class="text-sm leading-6 text-copy">${n(l.message)}</p>
+            </article>
+          `).join("")}
+        </div>
+      </section>
+    `:""}
+
+    <section class="grid items-start gap-4 xl:grid-cols-[1.25fr_0.75fr]">
+      <section class="stack-card compact-card">
+        <div class="mb-4 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="section-kicker">Standings</p>
+            <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">Who is still breathing</h3>
+            <p class="mt-2 text-sm leading-6 text-copy-soft">Strikes, teams already burned, and how much roster is left.</p>
+          </div>
+          <span class="chip chip-warm">${c.length} entrant${c.length===1?"":"s"}</span>
+        </div>
+        <div class="grid gap-3">
+          ${c.length?c.map(l=>E(l)).join(""):'<article class="rounded-[22px] border border-line bg-white/[0.04] p-4"><p class="text-sm leading-6 text-copy-soft">No entrants yet. Add players with <code>npm run pool -- --add-entrant="Name"</code>, then rebuild.</p></article>'}
+        </div>
+      </section>
+
+      <section class="stack-card compact-card">
+        <div class="mb-4">
+          <p class="section-kicker">The rules</p>
+          <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">How this pool works</h3>
+        </div>
+        <div class="grid gap-3">
+          ${(t.rules||[]).map(l=>`
+            <article class="lane-card compact-lane-card">
+              <p class="micro-label text-fire">${n(l.title)}</p>
+              <p class="mt-2 text-sm leading-6 text-copy-soft">${n(l.body)}</p>
+            </article>
+          `).join("")}
+        </div>
+      </section>
+    </section>
+
+    ${o?`
+      <section class="stack-card compact-card">
+        <div class="mb-4 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="section-kicker">This week</p>
+            <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">Week ${o.week} board</h3>
+            <p class="mt-2 text-sm leading-6 text-copy-soft">${n(_(o.status))} · locks ${n(o.deadlineLabel)}.</p>
+          </div>
+          <span class="chip chip-warm">${o.picksIn} pick${o.picksIn===1?"":"s"} in</span>
+        </div>
+        ${o.picks.length?`
+          <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            ${o.picks.map(l=>`
+              <article class="phase-lane-item phase-lane-item-compact">
+                <p class="micro-label text-fire">${n(l.name)}</p>
+                <p class="mt-2 text-lg font-semibold text-copy">${n(l.teamName)}</p>
+                <p class="mt-1 text-sm leading-6 text-copy-faint">${l.result?n(f(l.result)):"Awaiting result"}</p>
+              </article>
+            `).join("")}
+          </div>
+        `:'<p class="text-sm leading-6 text-copy-soft">No picks submitted yet this week.</p>'}
+      </section>
+    `:""}
+
+    <section class="grid gap-4 xl:grid-cols-[1fr_1fr]">
+      <section class="stack-card compact-card">
+        <div class="mb-4 flex items-end justify-between gap-4">
+          <div>
+            <p class="section-kicker">Season</p>
+            <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">Week by week</h3>
+          </div>
+          <span class="chip">${s.weeksPlayed??0} of ${i.length} final</span>
+        </div>
+        <div class="grid gap-2 sm:grid-cols-2">
+          ${i.map(l=>Me(l)).join("")}
+        </div>
+      </section>
+
+      <section class="stack-card compact-card">
+        <div class="mb-4 flex items-end justify-between gap-4">
+          <div>
+            <p class="section-kicker">Team board</p>
+            <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">One-time use tracker</h3>
+            <p class="mt-2 text-sm leading-6 text-copy-soft">How many entrants have already spent each team.</p>
+          </div>
+        </div>
+        <div class="grid gap-2 sm:grid-cols-2">
+          ${(t.teamUsage||[]).map(l=>`
+            <div class="flex items-center justify-between gap-3 rounded-[18px] border ${l.usedCount?"border-fire/25 bg-fire-soft":"border-line bg-white/[0.04]"} px-3 py-2">
+              <span class="text-sm text-copy">${n(l.name)}</span>
+              <span class="text-xs font-semibold ${l.usedCount?"text-fire":"text-copy-faint"}">${l.usedCount?`${l.usedCount} used`:"open"}</span>
+            </div>
+          `).join("")}
+        </div>
+      </section>
+    </section>
+  `}function E(e,t=!1){return`
+    <article class="rounded-[22px] border ${e.status==="eliminated"?"border-line bg-white/[0.02] opacity-70":e.status==="winner"?"border-fire/35 bg-fire-soft":"border-line bg-white/[0.04]"} p-4">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div class="min-w-0">
+          <h4 class="text-lg font-semibold text-copy">${n(e.name)}${e.status==="winner"?" 🏆":""}</h4>
+          <p class="mt-1 text-sm leading-6 text-copy-soft">${n(e.statusLabel)}</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          ${De(e)}
+          <span class="chip">${e.teamsRemaining} teams left</span>
+        </div>
+      </div>
+      ${t?"":`
+        <p class="mt-3 text-sm leading-6 text-copy-faint">${n(e.lastOutcomeLabel)}</p>
+        ${e.teamsUsed.length?`
+          <div class="mt-3 flex flex-wrap gap-2">
+            ${e.teamsUsed.map(a=>`<span class="chip">${n(a.name)}</span>`).join("")}
+          </div>
+        `:'<p class="mt-3 text-sm leading-6 text-copy-faint">No teams burned yet — all 32 still available.</p>'}
+      `}
+    </article>
+  `}function De(e){const t=e.strikesToEliminate||1,s=Array.from({length:t},(a,c)=>`<span class="${c<e.strikes?"text-fire":"text-copy-faint"}">${c<e.strikes?"●":"○"}</span>`).join("");return`<span class="chip ${e.strikes?"chip-warm":""}" title="${e.strikes} of ${t} strikes">${s} ${e.strikes}/${t}</span>`}function Me(e){return`
+    <div class="rounded-[18px] border ${e.isCurrent?"border-fire/35 bg-fire-soft":e.status==="final"?"border-line bg-white/[0.06]":"border-line bg-white/[0.02]"} px-3 py-2">
+      <div class="flex items-center justify-between gap-3">
+        <span class="text-sm font-semibold text-copy">Week ${e.week}</span>
+        <span class="text-xs ${e.isCurrent?"text-fire":"text-copy-faint"}">${n(e.statusLabel)}</span>
+      </div>
+      <p class="mt-1 text-xs text-copy-faint">${e.status==="final"?`${e.survivors} survived · ${e.casualties} struck`:`Locks ${n(e.deadlineLabel)}`}</p>
+    </div>
+  `}function _(e){return e==="final"?"Week final":e==="open"?"Picks open":"Not open yet"}function Ie(e,t="USD"){const s=Number(e)||0;try{return new Intl.NumberFormat("en-US",{style:"currency",currency:t,maximumFractionDigits:0}).format(s)}catch{return`${s} ${t}`}}function n(e=""){return String(e).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}

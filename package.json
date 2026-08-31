@@ -12,7 +12,9 @@
     "preview": "vite preview",
     "dev-dashboard": "vite",
     "build-dashboard": "vite build",
-    "sync-gratitude": "node scripts/sync-gratitude.mjs"
+    "sync-gratitude": "node scripts/sync-gratitude.mjs",
+    "pool": "node scripts/sync-pool.mjs",
+    "test-pool": "node scripts/test-pool.mjs"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.2",

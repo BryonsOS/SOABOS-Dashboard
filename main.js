@@ -17,7 +17,7 @@ async function init() {
 }
 
 function buildState(content) {
-  const { dashboard, current, projects, goals, areas, updates, birthdays, gratitude, events, fitness, warRoom } = content
+  const { dashboard, current, projects, goals, areas, updates, birthdays, gratitude, events, fitness, warRoom, pool } = content
   const sortedProjects = [...projects].sort(sortProjects)
   const spotlightProject = sortedProjects[0] || null
   const topUpdate = updates.at(-1) || null
@@ -32,6 +32,7 @@ function buildState(content) {
   const gratitudeCard = buildGratitudeCard(gratitude)
   const eventsCard = buildEventsCard(events)
   const fitnessCard = buildFitnessCard(fitness)
+  const poolCard = buildPoolCard(pool)
 
   return {
     dashboard,
@@ -45,6 +46,7 @@ function buildState(content) {
     events,
     fitness,
     warRoom,
+    pool,
     sortedProjects,
     spotlightProject,
     topUpdate,
@@ -58,7 +60,8 @@ function buildState(content) {
     allRecentBirthdays,
     gratitudeCard,
     eventsCard,
-    fitnessCard
+    fitnessCard,
+    poolCard
   }
 }
 
@@ -109,6 +112,7 @@ function renderTopBar(state, route) {
           ${renderNavLink('#/', 'Overview', route.name === 'home')}
           ${renderNavLink('#/prompt', 'Daily prompt', route.name === 'prompt')}
           ${renderNavLink('#/birthdays', 'Birthdays', route.name === 'birthdays')}
+          ${renderNavLink('#/pool', 'Survivor pool', route.name === 'pool')}
           ${renderNavLink('#/projects', 'Projects', route.name === 'projects' || route.name === 'project')}
           ${renderNavLink('#/updates', 'Updates', route.name === 'updates')}
         </nav>
@@ -129,6 +133,8 @@ function renderHome(state) {
       ${renderEventsWidget(state.eventsCard)}
       ${renderFitnessWidget(state.fitnessCard)}
     </section>
+
+    ${renderPoolWidget(state.poolCard)}
 
     <section class="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
       <div class="stack-card compact-card">
@@ -312,6 +318,10 @@ function renderRouteDetail(state, route) {
 
   if (route.name === 'birthdays') {
     return renderBirthdaysRoute(state, route)
+  }
+
+  if (route.name === 'pool') {
+    return renderPoolRoute(state)
   }
 
   if (route.name === 'projects') {
@@ -967,6 +977,7 @@ function parseRoute(hash) {
   if (parts[0] === 'prompt') return { name: 'prompt' }
   if (parts[0] === 'birthdays' && parts[1]) return { name: 'birthdays', month: parts[1].toLowerCase() }
   if (parts[0] === 'birthdays') return { name: 'birthdays' }
+  if (parts[0] === 'pool') return { name: 'pool' }
   if (parts[0] === 'projects' && parts[1]) return { name: 'project', slug: parts[1] }
   if (parts[0] === 'projects') return { name: 'projects' }
   if (parts[0] === 'updates') return { name: 'updates' }
@@ -1340,4 +1351,291 @@ function buildFitnessCard(fitness = {}) {
       typeLabel: humanizeToken(String(item.type || 'session'))
     }))
   }
+}
+
+function buildPoolCard(pool = {}) {
+  const summary = pool.summary || {}
+  const standings = Array.isArray(pool.standings) ? pool.standings : []
+
+  return {
+    title: pool.settings?.title || 'Survivor pool',
+    subtitle: pool.settings?.subtitle || 'One pick a week. Survive and advance.',
+    seasonLabel: pool.settings ? `${pool.settings.season} ${pool.settings.league}` : '',
+    formatLabel: summary.formatLabel || '',
+    weekLabel: summary.currentWeek ? `Week ${summary.currentWeek}` : 'Preseason',
+    weekStatusLabel: weekStatusCopy(summary.currentWeekStatus),
+    deadlineLabel: pool.currentWeek?.deadlineLabel || 'TBD',
+    aliveCount: summary.aliveCount ?? 0,
+    eliminatedCount: summary.eliminatedCount ?? 0,
+    entrantsTotal: summary.entrantsTotal ?? 0,
+    potLabel: summary.potLabel || '$0',
+    picksIn: summary.picksIn ?? 0,
+    picksNeeded: summary.picksNeeded ?? 0,
+    championName: summary.championName || null,
+    leaders: standings.slice(0, 4),
+    hasEntrants: standings.length > 0,
+    warningCount: (pool.warnings || []).length
+  }
+}
+
+function renderPoolWidget(poolCard = {}) {
+  const pickProgress = poolCard.picksNeeded
+    ? `${poolCard.picksIn}/${poolCard.picksNeeded} picks in`
+    : 'No picks needed yet'
+
+  return `
+    <section class="stack-card compact-card">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="section-kicker">Survivor pool</p>
+          <h2 class="text-2xl font-semibold tracking-[-0.03em] text-copy">${escapeHtml(poolCard.title)}</h2>
+          <p class="mt-2 text-sm leading-6 text-copy-soft">${escapeHtml(poolCard.subtitle)}</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="chip chip-warm">${escapeHtml(poolCard.weekLabel)}</span>
+          <span class="chip">${escapeHtml(poolCard.potLabel)} pot</span>
+        </div>
+      </div>
+
+      <div class="mt-4 grid gap-3">
+        <article class="rounded-[22px] border border-fire/18 bg-fire-soft p-4">
+          <p class="micro-label text-fire">${escapeHtml(poolCard.weekStatusLabel)}</p>
+          <p class="mt-2 text-sm leading-6 text-copy">
+            ${poolCard.championName
+              ? `<strong>${escapeHtml(poolCard.championName)}</strong> is the last player standing.`
+              : `${poolCard.aliveCount} alive · ${poolCard.eliminatedCount} out · ${pickProgress}.`}
+          </p>
+          <p class="mt-2 text-sm leading-6 text-copy-faint">Picks lock ${escapeHtml(poolCard.deadlineLabel)}.</p>
+        </article>
+
+        ${poolCard.hasEntrants
+          ? `<div class="grid gap-3">${poolCard.leaders.map((entrant) => renderPoolEntrantRow(entrant, true)).join('')}</div>`
+          : '<article class="rounded-[22px] border border-line bg-white/[0.04] p-4"><p class="text-sm leading-6 text-copy-soft">No entrants yet. Add players with <code>npm run pool -- --add-entrant="Name"</code>.</p></article>'}
+
+        <a class="chip justify-center" href="#/pool">Open the full pool board →</a>
+      </div>
+    </section>
+  `
+}
+
+function renderPoolRoute(state) {
+  const pool = state.pool || {}
+  const summary = pool.summary || {}
+  const settings = pool.settings || {}
+  const standings = Array.isArray(pool.standings) ? pool.standings : []
+  const weeks = Array.isArray(pool.weeks) ? pool.weeks : []
+  const warnings = Array.isArray(pool.warnings) ? pool.warnings : []
+  const current = pool.currentWeek
+
+  return `
+    <section class="stack-card compact-card">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="section-kicker">Survivor pool</p>
+          <h2 class="text-3xl font-semibold tracking-[-0.03em] text-copy">${escapeHtml(settings.title || 'Survivor pool')}</h2>
+          <p class="mt-2 max-w-2xl text-sm leading-6 text-copy-soft">${escapeHtml(settings.subtitle || '')}</p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <a class="chip" href="#/">Back to overview</a>
+          <span class="chip chip-warm">${escapeHtml(summary.formatLabel || '')}</span>
+          <span class="chip">${escapeHtml(String(settings.season || ''))} ${escapeHtml(settings.league || '')}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      ${renderStatCard('Still alive', summary.aliveCount ?? 0, `${summary.entrantsTotal ?? 0} entered this season.`)}
+      ${renderStatCard('Eliminated', summary.eliminatedCount ?? 0, `${settings.strikesToEliminate ?? 2} strikes ends a run.`)}
+      ${renderStatCard(summary.currentWeek ? `Week ${summary.currentWeek}` : 'Preseason', `${summary.picksIn ?? 0}/${summary.picksNeeded ?? 0}`, `Picks in. Locks ${escapeHtml(current?.deadlineLabel || 'TBD')}.`)}
+      ${renderStatCard('Pot', summary.potLabel || '$0', `${escapeHtml(formatMoneyish(settings.entryFee, settings.currency))} per entry.`)}
+    </section>
+
+    ${warnings.length ? `
+      <section class="stack-card compact-card">
+        <p class="section-kicker">Commissioner attention</p>
+        <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">${warnings.length} thing${warnings.length === 1 ? '' : 's'} to resolve</h3>
+        <div class="mt-4 grid gap-3">
+          ${warnings.map((warning) => `
+            <article class="rounded-[22px] border border-amber-400/25 bg-amber-400/10 p-4">
+              <p class="text-sm leading-6 text-copy">${escapeHtml(warning.message)}</p>
+            </article>
+          `).join('')}
+        </div>
+      </section>
+    ` : ''}
+
+    <section class="grid items-start gap-4 xl:grid-cols-[1.25fr_0.75fr]">
+      <section class="stack-card compact-card">
+        <div class="mb-4 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="section-kicker">Standings</p>
+            <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">Who is still breathing</h3>
+            <p class="mt-2 text-sm leading-6 text-copy-soft">Strikes, teams already burned, and how much roster is left.</p>
+          </div>
+          <span class="chip chip-warm">${standings.length} entrant${standings.length === 1 ? '' : 's'}</span>
+        </div>
+        <div class="grid gap-3">
+          ${standings.length
+            ? standings.map((entrant) => renderPoolEntrantRow(entrant)).join('')
+            : '<article class="rounded-[22px] border border-line bg-white/[0.04] p-4"><p class="text-sm leading-6 text-copy-soft">No entrants yet. Add players with <code>npm run pool -- --add-entrant="Name"</code>, then rebuild.</p></article>'}
+        </div>
+      </section>
+
+      <section class="stack-card compact-card">
+        <div class="mb-4">
+          <p class="section-kicker">The rules</p>
+          <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">How this pool works</h3>
+        </div>
+        <div class="grid gap-3">
+          ${(pool.rules || []).map((rule) => `
+            <article class="lane-card compact-lane-card">
+              <p class="micro-label text-fire">${escapeHtml(rule.title)}</p>
+              <p class="mt-2 text-sm leading-6 text-copy-soft">${escapeHtml(rule.body)}</p>
+            </article>
+          `).join('')}
+        </div>
+      </section>
+    </section>
+
+    ${current ? `
+      <section class="stack-card compact-card">
+        <div class="mb-4 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="section-kicker">This week</p>
+            <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">Week ${current.week} board</h3>
+            <p class="mt-2 text-sm leading-6 text-copy-soft">${escapeHtml(weekStatusCopy(current.status))} · locks ${escapeHtml(current.deadlineLabel)}.</p>
+          </div>
+          <span class="chip chip-warm">${current.picksIn} pick${current.picksIn === 1 ? '' : 's'} in</span>
+        </div>
+        ${current.picks.length ? `
+          <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            ${current.picks.map((pick) => `
+              <article class="phase-lane-item phase-lane-item-compact">
+                <p class="micro-label text-fire">${escapeHtml(pick.name)}</p>
+                <p class="mt-2 text-lg font-semibold text-copy">${escapeHtml(pick.teamName)}</p>
+                <p class="mt-1 text-sm leading-6 text-copy-faint">${pick.result ? escapeHtml(capitalize(pick.result)) : 'Awaiting result'}</p>
+              </article>
+            `).join('')}
+          </div>
+        ` : '<p class="text-sm leading-6 text-copy-soft">No picks submitted yet this week.</p>'}
+      </section>
+    ` : ''}
+
+    <section class="grid gap-4 xl:grid-cols-[1fr_1fr]">
+      <section class="stack-card compact-card">
+        <div class="mb-4 flex items-end justify-between gap-4">
+          <div>
+            <p class="section-kicker">Season</p>
+            <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">Week by week</h3>
+          </div>
+          <span class="chip">${summary.weeksPlayed ?? 0} of ${weeks.length} final</span>
+        </div>
+        <div class="grid gap-2 sm:grid-cols-2">
+          ${weeks.map((week) => renderPoolWeekChip(week)).join('')}
+        </div>
+      </section>
+
+      <section class="stack-card compact-card">
+        <div class="mb-4 flex items-end justify-between gap-4">
+          <div>
+            <p class="section-kicker">Team board</p>
+            <h3 class="text-2xl font-semibold tracking-[-0.03em] text-copy">One-time use tracker</h3>
+            <p class="mt-2 text-sm leading-6 text-copy-soft">How many entrants have already spent each team.</p>
+          </div>
+        </div>
+        <div class="grid gap-2 sm:grid-cols-2">
+          ${(pool.teamUsage || []).map((team) => `
+            <div class="flex items-center justify-between gap-3 rounded-[18px] border ${team.usedCount ? 'border-fire/25 bg-fire-soft' : 'border-line bg-white/[0.04]'} px-3 py-2">
+              <span class="text-sm text-copy">${escapeHtml(team.name)}</span>
+              <span class="text-xs font-semibold ${team.usedCount ? 'text-fire' : 'text-copy-faint'}">${team.usedCount ? `${team.usedCount} used` : 'open'}</span>
+            </div>
+          `).join('')}
+        </div>
+      </section>
+    </section>
+  `
+}
+
+function renderPoolEntrantRow(entrant, compact = false) {
+  const toneClass = entrant.status === 'eliminated'
+    ? 'border-line bg-white/[0.02] opacity-70'
+    : entrant.status === 'winner'
+      ? 'border-fire/35 bg-fire-soft'
+      : 'border-line bg-white/[0.04]'
+
+  return `
+    <article class="rounded-[22px] border ${toneClass} p-4">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div class="min-w-0">
+          <h4 class="text-lg font-semibold text-copy">${escapeHtml(entrant.name)}${entrant.status === 'winner' ? ' 🏆' : ''}</h4>
+          <p class="mt-1 text-sm leading-6 text-copy-soft">${escapeHtml(entrant.statusLabel)}</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          ${renderStrikePips(entrant)}
+          <span class="chip">${entrant.teamsRemaining} teams left</span>
+        </div>
+      </div>
+      ${compact ? '' : `
+        <p class="mt-3 text-sm leading-6 text-copy-faint">${escapeHtml(entrant.lastOutcomeLabel)}</p>
+        ${entrant.teamsUsed.length ? `
+          <div class="mt-3 flex flex-wrap gap-2">
+            ${entrant.teamsUsed.map((team) => `<span class="chip">${escapeHtml(team.name)}</span>`).join('')}
+          </div>
+        ` : '<p class="mt-3 text-sm leading-6 text-copy-faint">No teams burned yet — all 32 still available.</p>'}
+      `}
+    </article>
+  `
+}
+
+function renderStrikePips(entrant) {
+  const total = entrant.strikesToEliminate || 1
+  const pips = Array.from({ length: total }, (_, index) =>
+    `<span class="${index < entrant.strikes ? 'text-fire' : 'text-copy-faint'}">${index < entrant.strikes ? '●' : '○'}</span>`
+  ).join('')
+
+  return `<span class="chip ${entrant.strikes ? 'chip-warm' : ''}" title="${entrant.strikes} of ${total} strikes">${pips} ${entrant.strikes}/${total}</span>`
+}
+
+function renderPoolWeekChip(week) {
+  const tone = week.isCurrent
+    ? 'border-fire/35 bg-fire-soft'
+    : week.status === 'final'
+      ? 'border-line bg-white/[0.06]'
+      : 'border-line bg-white/[0.02]'
+
+  return `
+    <div class="rounded-[18px] border ${tone} px-3 py-2">
+      <div class="flex items-center justify-between gap-3">
+        <span class="text-sm font-semibold text-copy">Week ${week.week}</span>
+        <span class="text-xs ${week.isCurrent ? 'text-fire' : 'text-copy-faint'}">${escapeHtml(week.statusLabel)}</span>
+      </div>
+      <p class="mt-1 text-xs text-copy-faint">${week.status === 'final'
+        ? `${week.survivors} survived · ${week.casualties} struck`
+        : `Locks ${escapeHtml(week.deadlineLabel)}`}</p>
+    </div>
+  `
+}
+
+function weekStatusCopy(status) {
+  if (status === 'final') return 'Week final'
+  if (status === 'open') return 'Picks open'
+  return 'Not open yet'
+}
+
+function formatMoneyish(amount, currency = 'USD') {
+  const value = Number(amount) || 0
+  try {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency, maximumFractionDigits: 0 }).format(value)
+  } catch {
+    return `${value} ${currency}`
+  }
+}
+
+function escapeHtml(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
 }
